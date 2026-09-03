@@ -805,28 +805,25 @@
   .svc-card:hover::after { transform: scaleX(1); }
 
   /* ======================================================================
-     Signature motif — orbiting arcs. Each circle carries pathLength="100",
-     so one dash scale reads the same on every radius. Keep every arc past the
-     half-turn mark: shorter than that and four rings read as scribble, not
-     as one figure.
+     Signature motif — four complete concentric circles that breathe.
      ====================================================================== */
   .rings { display: grid; place-items: center; aspect-ratio: 1; inline-size: 100%; }
   .rings svg { inline-size: 100%; block-size: auto; overflow: visible; }
   .rings circle {
     fill: none;
     stroke: currentColor;
-    stroke-linecap: round;
     opacity: .2;
     transform-box: view-box;
     transform-origin: 50% 50%;
   }
-  /* Negative delays fan the four gaps a quarter-turn apart, so the figure
-     never loads with every opening stacked on the same side. */
-  .rings .r1 { stroke-dasharray: 64 36; opacity: .38; animation: orbit 34s linear infinite; }
-  .rings .r2 { stroke-dasharray: 58 42; opacity: .3;  animation: orbit 44s linear -11s infinite reverse; }
-  .rings .r3 { stroke-dasharray: 52 48; opacity: .22; animation: orbit 56s linear -28s infinite; }
-  .rings .r4 { stroke-dasharray: 46 54; opacity: .16; animation: orbit 72s linear -54s infinite reverse; }
-  @keyframes orbit { to { transform: rotate(360deg); } }
+  .rings .r1 { opacity: .34; animation: breathe 9s var(--ease-in-out) infinite; }
+  .rings .r2 { opacity: .27; animation: breathe 9s var(--ease-in-out) .6s infinite; }
+  .rings .r3 { opacity: .2;  animation: breathe 9s var(--ease-in-out) 1.2s infinite; }
+  .rings .r4 { opacity: .14; animation: breathe 9s var(--ease-in-out) 1.8s infinite; }
+  @keyframes breathe {
+    0%, 100% { transform: scale(.97); }
+    50%      { transform: scale(1.03); }
+  }
 
   /* ======================================================================
      Numbered list / signs

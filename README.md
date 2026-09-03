@@ -101,9 +101,8 @@ valori pentru fiecare token semantic.
 **Textură.** Un strat de grain generat cu `feTurbulence` inline, `mix-blend-mode: multiply`
 pe lumină și `overlay` pe întuneric. Zero request-uri suplimentare.
 
-**Motiv grafic.** Arce care orbitează — în hero, în capetele de pagină și în benzile de CTA.
-Fiecare cerc poartă `pathLength="100"`, deci o singură scară de `stroke-dasharray` arată la
-fel pe orice rază. Sub hero rulează și un caroiaj de coloane abia perceptibil.
+**Motiv grafic.** Cercuri concentrice complete care „respiră" — în hero, în capetele de
+pagină și în benzile de CTA. Sub hero rulează și un caroiaj de coloane abia perceptibil.
 
 **Mișcare.** Curbe lente, `cubic-bezier(.16, 1, .3, 1)`. Totul respectă
 `prefers-reduced-motion`. Tranziții între documente (`@view-transition`) unde browserul le
