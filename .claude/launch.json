@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "psiholog-local",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["_build/serve.js", "4173"],
+      "port": 4173
+    }
+  ]
+}

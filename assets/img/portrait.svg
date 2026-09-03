@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Ilustrație abstractă — portret substituent">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#DEE9FB"/>
+      <stop offset="0.55" stop-color="#BBD1F5"/>
+      <stop offset="1" stop-color="#8FB2EC"/>
+    </linearGradient>
+    <linearGradient id="fig" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#2A55AB"/>
+      <stop offset="1" stop-color="#102043"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.36" cy="0.3" r="0.62">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <clipPath id="clip">
+      <rect width="800" height="1000"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="800" height="1000" fill="url(#bg)"/>
+    <rect width="800" height="1000" fill="url(#glow)"/>
+
+    <!-- concentric rings, the site's signature motif -->
+    <g fill="none" stroke="#102043" stroke-opacity="0.10" stroke-width="1.5">
+      <circle cx="400" cy="360" r="150"/>
+      <circle cx="400" cy="360" r="215"/>
+      <circle cx="400" cy="360" r="285"/>
+      <circle cx="400" cy="360" r="360"/>
+    </g>
+
+    <!-- abstract figure -->
+    <g fill="url(#fig)">
+      <circle cx="400" cy="352" r="128"/>
+      <path d="M400 512c132 0 240 104 258 240 6 44 10 96 12 156H130c2-60 6-112 12-156 18-136 126-240 258-240Z"/>
+    </g>
+
+    <!-- shoulder highlight -->
+    <path d="M400 512c132 0 240 104 258 240 6 44 10 96 12 156h-64c-4-176-96-300-206-300s-202 124-206 300h-64c2-60 6-112 12-156 18-136 126-240 258-240Z" fill="#FFFFFF" fill-opacity="0.07"/>
+
+    <!-- psi mark -->
+    <text x="400" y="392" font-family="Georgia, 'Times New Roman', serif" font-size="150" fill="#DEE9FB" fill-opacity="0.28" text-anchor="middle">Ψ</text>
+
+    <rect width="800" height="1000" filter="url(#grain)" opacity="0.16" style="mix-blend-mode:multiply"/>
+  </g>
+</svg>

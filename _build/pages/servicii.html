@@ -1,0 +1,124 @@
+  <section class="page-head">
+    <div class="rings page-head__rings" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="40" pathLength="100"/><circle class="r2" cx="100" cy="100" r="60" pathLength="100"/><circle class="r3" cx="100" cy="100" r="80" pathLength="100"/><circle class="r4" cx="100" cy="100" r="98" pathLength="100"/></svg>
+    </div>
+    <div class="container page-head__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Acasă</a>{{icon:chevronR}}<span aria-current="page">Servicii</span>
+      </nav>
+      <p class="eyebrow mt-5">Servicii</p>
+      <h1>Cum mă ajută serviciile unui psiholog?</h1>
+      <p class="lede">
+        Fiecare persoană ajunge la psiholog dintr-un motiv diferit — anxietate, stres cotidian,
+        o relație de cuplu în dificultate, sau nevoia de a se cunoaște mai bine.
+      </p>
+      <div class="cluster mt-6">
+        <div class="segmented" data-segmented="format" role="tablist" aria-label="Format ședință">
+          <span class="segmented__thumb" aria-hidden="true"></span>
+          <button class="segmented__btn" type="button" role="tab" aria-selected="true" data-value="cabinet">În cabinet</button>
+          <button class="segmented__btn" type="button" role="tab" aria-selected="false" data-value="online">Online</button>
+        </div>
+        <p class="fs-xs muted" style="margin:0">Fiecare serviciu este disponibil în ambele formate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div data-segment-target="format" data-segment-value="cabinet">
+        <p class="lede" style="max-width:64ch">
+          Serviciile de mai jos acoperă evaluare psihologică, consiliere, terapie individuală și de cuplu,
+          precum și dezvoltare personală, fiecare cu o abordare adaptată situației tale.
+        </p>
+      </div>
+      <div data-segment-target="format" data-segment-value="online" hidden>
+        <p class="lede" style="max-width:64ch">
+          Aceleași șase servicii, susținute prin Google Meet. Primești linkul în emailul de confirmare,
+          iar confidențialitatea este identică celei din cabinet.
+        </p>
+      </div>
+
+      <div class="grid grid--3 mt-8" data-reveal-group>
+        {{services}}
+      </div>
+
+      <div class="callout mt-8" style="max-width:none">
+        {{icon:compass}}
+        <p><b>Nu știi ce ți se potrivește?</b> Începe cu <a href="test-relationare.html#checkin">check-in-ul emoțional</a> — șase întrebări și o recomandare, în două minute. Sau sună la <a href="tel:{{phoneRaw}}">{{phone}}</a> și lămurim în cinci.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sunken">
+    <div class="container">
+      <div class="sec-head sec-head--center">
+        <div class="sec-head__top">
+          <div>
+            <p class="eyebrow eyebrow--bare">Comparație</p>
+            <h2>Care serviciu, în ce situație</h2>
+          </div>
+        </div>
+      </div>
+
+      <div style="overflow-x:auto">
+        <table class="spec" style="min-width:44rem;display:table;border-collapse:collapse">
+          <caption class="visually-hidden">Comparație între servicii: situație, durată și rezultat</caption>
+          <thead>
+            <tr style="border-bottom:1px solid var(--line)">
+              <th scope="col" style="text-align:start;padding:.9rem 1rem .9rem 0;font-size:var(--fs-xs);color:var(--text-muted);font-weight:500">Dacă…</th>
+              <th scope="col" style="text-align:start;padding:.9rem 1rem;font-size:var(--fs-xs);color:var(--text-muted);font-weight:500">Serviciul potrivit</th>
+              <th scope="col" style="text-align:start;padding:.9rem 0 .9rem 1rem;font-size:var(--fs-xs);color:var(--text-muted);font-weight:500">Durată</th>
+            </tr>
+          </thead>
+          <tbody style="font-size:var(--fs-sm)">
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:1rem 1rem 1rem 0">Ai nevoie de un document oficial sau de o imagine clinică</td>
+              <td style="padding:1rem"><a href="servicii/psihologie-clinica.html">Evaluare psihologică</a></td>
+              <td style="padding:1rem 0 1rem 1rem" class="muted">60–90 min</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:1rem 1rem 1rem 0">Treci printr-o schimbare sau o decizie grea</td>
+              <td style="padding:1rem"><a href="servicii/consiliere-psihologica.html">Consiliere psihologică</a></td>
+              <td style="padding:1rem 0 1rem 1rem" class="muted">50 min</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:1rem 1rem 1rem 0">Îngrijorarea sau apatia îți ocupă zilele</td>
+              <td style="padding:1rem"><a href="servicii/terapie-depresie-anxietate.html">Terapie depresie–anxietate</a></td>
+              <td style="padding:1rem 0 1rem 1rem" class="muted">50 min</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:1rem 1rem 1rem 0">Aceeași ceartă se repetă în cuplu</td>
+              <td style="padding:1rem"><a href="servicii/terapie-de-cuplu.html">Terapie de cuplu</a></td>
+              <td style="padding:1rem 0 1rem 1rem" class="muted">80 min</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line)">
+              <td style="padding:1rem 1rem 1rem 0">Te lovești de aceleași blocaje, în mai multe zone</td>
+              <td style="padding:1rem"><a href="servicii/terapie-individuala.html">Terapie individuală</a></td>
+              <td style="padding:1rem 0 1rem 1rem" class="muted">50 min</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1rem 1rem 0">Funcționezi bine, dar vrei să crești deliberat</td>
+              <td style="padding:1rem"><a href="servicii/dezvoltare-personala.html">Dezvoltare personală</a></td>
+              <td style="padding:1rem 0 1rem 1rem" class="muted">50 min</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--flush-top">
+    <div class="container">
+      <div class="cta-band">
+        <div class="rings cta-band__rings" aria-hidden="true">
+          <svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="40" pathLength="100"/><circle class="r2" cx="100" cy="100" r="62" pathLength="100"/><circle class="r3" cx="100" cy="100" r="82" pathLength="100"/><circle class="r4" cx="100" cy="100" r="99" pathLength="100"/></svg>
+        </div>
+        <p class="eyebrow eyebrow--accent">Servicii profesionale de psihologie și psihoterapie</p>
+        <h2 class="mt-4" style="max-width:20ch">Alegi serviciul, alegi ora. Restul îl clarificăm împreună.</h2>
+        <div class="cluster mt-6">
+          <a class="btn btn--inverse btn--lg" href="programare.html">Programare {{icon:arrow:btn__icon btn__icon--arrow}}</a>
+          <a class="btn btn--ghost btn--lg" href="tel:{{phoneRaw}}">{{icon:phone:btn__icon}} {{phone}}</a>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Meridian — cabinet de psihologie">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7F9FC"/>
+      <stop offset="1" stop-color="#DEE9FB"/>
+    </linearGradient>
+    <radialGradient id="orb" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#8FB2EC" stop-opacity="0.7"/>
+      <stop offset="1" stop-color="#8FB2EC" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#EDBB79" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#EDBB79" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5D8DDF"/>
+      <stop offset="1" stop-color="#183164"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1060" cy="110" r="330" fill="url(#orb)"/>
+  <circle cx="120" cy="600" r="260" fill="url(#orb2)"/>
+
+  <g fill="none" stroke="#2A55AB" stroke-opacity="0.16" stroke-width="1.8" stroke-linecap="round">
+    <circle cx="1010" cy="330" r="120" stroke-dasharray="250 500"/>
+    <circle cx="1010" cy="330" r="175" stroke-dasharray="210 900"/>
+    <circle cx="1010" cy="330" r="232" stroke-dasharray="620 900"/>
+  </g>
+
+  <circle cx="116" cy="122" r="36" fill="url(#mark)"/>
+  <g fill="none" stroke="#F7F9FC" stroke-width="2.2" stroke-linecap="round">
+    <circle cx="116" cy="122" r="15.5"/>
+    <path d="M116 106.5c5.2 4.4 5.2 26.6 0 31M116 106.5c-5.2 4.4-5.2 26.6 0 31M101 115.5h30M101 128.5h30"/>
+  </g>
+
+  <text x="172" y="118" font-family="Helvetica, Arial, sans-serif" font-size="32" font-weight="600" letter-spacing="-0.5" fill="#131A24">Meridian</text>
+  <text x="172" y="146" font-family="Helvetica, Arial, sans-serif" font-size="13" letter-spacing="4" fill="#6F8195">CABINET DE PSIHOLOGIE</text>
+
+  <text x="80" y="308" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="600" letter-spacing="-1.6" fill="#131A24">Un spațiu sigur</text>
+  <text x="80" y="384" font-family="Helvetica, Arial, sans-serif" font-size="64" font-weight="600" letter-spacing="-1.6" fill="#204288">pentru schimbare.</text>
+
+  <text x="80" y="448" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#41505F">Psihoterapie cognitiv-comportamentală · în cabinet și online</text>
+
+  <rect x="80" y="500" width="1040" height="1" fill="#C4CFDD"/>
+  <text x="80" y="544" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#6F8195">Evaluare psihologică</text>
+  <text x="320" y="544" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#6F8195">Consiliere</text>
+  <text x="470" y="544" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#6F8195">Ședințe individuale și de cuplu</text>
+</svg>

@@ -1,0 +1,158 @@
+  <section class="page-head">
+    <div class="rings page-head__rings" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="40" pathLength="100"/><circle class="r2" cx="100" cy="100" r="60" pathLength="100"/><circle class="r3" cx="100" cy="100" r="80" pathLength="100"/><circle class="r4" cx="100" cy="100" r="98" pathLength="100"/></svg>
+    </div>
+    <div class="container page-head__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Acasă</a>{{icon:chevronR}}<span aria-current="page">Contact</span>
+      </nav>
+      <p class="eyebrow mt-5">Contact</p>
+      <h1>Hai să vorbim</h1>
+      <p class="lede">Solicitările sunt preluate în cel mai scurt timp. Dacă preferi, poți suna direct.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split split--lean-r" style="align-items:start">
+
+        <aside class="stack stack--loose">
+          <div>
+            <p class="eyebrow eyebrow--bare">Telefon</p>
+            <p class="fs-lg display mt-3"><a href="tel:{{phoneRaw}}" style="text-decoration:none">{{phone}}</a></p>
+            <div class="cluster mt-2" style="--gap:.4rem">
+              <button class="btn btn--quiet btn--sm" type="button" data-copy="{{phone}}">Copiază numărul</button>
+              <a class="btn btn--quiet btn--sm" href="{{wa}}" target="_blank" rel="noopener">Scrie pe WhatsApp</a>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid var(--line);padding-top:1.5rem">
+            <p class="eyebrow eyebrow--bare">Adresă</p>
+            <h2 class="mt-3" style="font-size:var(--fs-lg)">Punct de lucru</h2>
+            <p class="fs-sm soft mt-3">
+              Adresa cabinetului se anunță în curând. Până atunci, ședințele online sunt
+              disponibile pentru toate serviciile.
+            </p>
+          </div>
+
+          <div style="border-top:1px solid var(--line);padding-top:1.5rem">
+            <p class="eyebrow eyebrow--bare">Email</p>
+            <p class="fs-sm soft mt-3">
+              Adresa de email se adaugă în curând. Cel mai rapid mă găsești pe
+              <a href="{{wa}}" target="_blank" rel="noopener">WhatsApp</a> sau la telefon.
+            </p>
+          </div>
+
+          <div style="border-top:1px solid var(--line);padding-top:1.5rem">
+            <p class="eyebrow eyebrow--bare">Program</p>
+            <dl class="spec mt-3" style="border-top:0">
+              <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Luni – Vineri</dt><dd>09:00 – 21:00</dd></div>
+              <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Sâmbătă</dt><dd>10:00 – 16:00</dd></div>
+              <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Duminică</dt><dd class="muted">Închis</dd></div>
+            </dl>
+          </div>
+
+          <div class="cluster">
+            <a class="btn btn--primary" href="programare.html">Programare {{icon:arrow:btn__icon btn__icon--arrow}}</a>
+            <a class="btn btn--ghost" href="{{wa}}" target="_blank" rel="noopener">{{icon:whatsapp:btn__icon}} WhatsApp</a>
+          </div>
+        </aside>
+
+        <div>
+          <div class="card card--feature">
+            <p class="eyebrow eyebrow--bare">Formular de contact</p>
+            <h2 class="mt-3" style="font-size:var(--fs-xl)">Scrie-mi câteva rânduri</h2>
+            <p class="fs-sm muted">Nu ai nevoie de un mesaj lung. Câteva propoziții sunt suficiente ca să știu cum să te ajut.</p>
+
+            <form class="grid grid--2 mt-5" style="--gap:1.1rem" data-contact-form novalidate>
+              <div class="field">
+                <label class="field__label" for="c-name">Nume și prenume <span class="field__req">obligatoriu</span></label>
+                <input class="input" id="c-name" name="name" type="text" autocomplete="name" placeholder="Ex. Andrei Ionescu" required>
+                <p class="field__error">Te rog scrie numele complet.</p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="c-phone">Telefon <span class="field__req">obligatoriu</span></label>
+                <input class="input" id="c-phone" name="phone" type="tel" autocomplete="tel" placeholder="07xx xxx xxx" required>
+                <p class="field__error">Un număr de telefon valid, te rog.</p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="c-email">Email <span class="field__req">obligatoriu</span></label>
+                <input class="input" id="c-email" name="email" type="email" autocomplete="email" placeholder="nume@exemplu.ro" required>
+                <p class="field__error">Adresa de email nu pare validă.</p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="c-subject">Subiect <span class="field__req">obligatoriu</span></label>
+                <select class="select" id="c-subject" name="subject" required>
+                  <option value="">Alege un subiect…</option>
+                  <option>Programare — terapie individuală</option>
+                  <option>Programare — terapie de cuplu</option>
+                  <option>Programare — evaluare psihologică</option>
+                  <option>Întrebare despre ședințele online</option>
+                  <option>Altceva</option>
+                </select>
+                <p class="field__error">Alege un subiect.</p>
+              </div>
+
+              <div class="field full-width">
+                <label class="field__label" for="c-message">Mesaj <span class="field__req">obligatoriu</span></label>
+                <textarea class="textarea" id="c-message" name="message" placeholder="Spune-mi pe scurt ce te aduce aici." required></textarea>
+                <p class="field__error">Câteva propoziții, te rog.</p>
+              </div>
+
+              <label class="check full-width">
+                <input type="checkbox" name="gdpr" required>
+                <span>Sunt de acord ca datele mele să fie folosite exclusiv pentru a răspunde acestui mesaj, conform <a href="legal.html#confidentialitate">Politicii de confidențialitate</a>.</span>
+              </label>
+
+              <div class="cluster full-width">
+                <button class="btn btn--primary" type="submit">Trimite mesajul {{icon:arrow:btn__icon btn__icon--arrow}}</button>
+                <p class="fs-xs muted" style="margin:0">Solicitările sunt preluate în cel mai scurt timp.</p>
+              </div>
+            </form>
+          </div>
+
+          <div class="mt-8">
+            <p class="eyebrow">Punct de lucru</p>
+            <div class="map-frame mt-4">
+              <div style="position:absolute;inset:0;display:grid;place-items:center;gap:1rem;padding:2rem;text-align:center">
+                <span class="card__icon">{{icon:pin}}</span>
+                <div>
+                  <p class="fs-sm"><b>Adresa se anunță în curând</b></p>
+                  <p class="fs-xs muted" style="max-width:38ch">
+                    Harta apare aici imediat ce cabinetul are o adresă publică. Ședințele online
+                    se pot programa deja.
+                  </p>
+                </div>
+                <a class="btn btn--ghost btn--sm" href="programare.html">Programează online</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sunken section--sm">
+    <div class="container">
+      <div class="grid grid--3" data-reveal-group>
+        <article class="card" data-reveal>
+          <span class="card__icon">{{icon:clock}}</span>
+          <h3 class="card__title">Răspund rapid</h3>
+          <p class="card__text">Solicitările sunt preluate în cel mai scurt timp, în intervalul de program.</p>
+        </article>
+        <article class="card" data-reveal>
+          <span class="card__icon">{{icon:shield}}</span>
+          <h3 class="card__title">Confidențial</h3>
+          <p class="card__text">Tot ce îmi scrii rămâne între noi, în același cadru profesional ca în cabinet.</p>
+        </article>
+        <article class="card" data-reveal>
+          <span class="card__icon">{{icon:video}}</span>
+          <h3 class="card__title">Oriunde ai fi</h3>
+          <p class="card__text">Oriunde te-ai afla, toate serviciile sunt disponibile online.</p>
+        </article>
+      </div>
+    </div>
+  </section>

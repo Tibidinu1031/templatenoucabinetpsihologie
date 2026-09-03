@@ -1,0 +1,108 @@
+  <section class="page-head">
+    <div class="rings page-head__rings" aria-hidden="true">
+      <svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="40" pathLength="100"/><circle class="r2" cx="100" cy="100" r="60" pathLength="100"/><circle class="r3" cx="100" cy="100" r="80" pathLength="100"/><circle class="r4" cx="100" cy="100" r="98" pathLength="100"/></svg>
+    </div>
+    <div class="container page-head__inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Acasă</a>{{icon:chevronR}}<span aria-current="page">Articole</span>
+      </nav>
+      <p class="eyebrow mt-5">Articole</p>
+      <h1>Psihologie aplicată, pe înțelesul tău</h1>
+      <p class="lede">
+        Texte scurte despre lucrurile care apar cel mai des în cabinet: somn, anxietate, depresie
+        și felul în care ne purtăm unii cu alții.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="rail">
+        <aside class="rail__aside">
+          <p class="eyebrow eyebrow--bare">Teme</p>
+          <nav class="toc mt-4" data-toc aria-label="Teme">
+            <a href="#somn">Somn</a>
+            <a href="#anxietate">Anxietate</a>
+            <a href="#depresie">Depresie</a>
+          </nav>
+
+          <div class="card card--tinted mt-7">
+            <p class="eyebrow eyebrow--bare">Primești articolele</p>
+            <p class="fs-xs soft mt-3">Scrie-mi și îți trimit textele noi pe email, fără altceva în plus.</p>
+            <a class="btn btn--ghost btn--sm btn--block mt-4" href="{{wa}}" target="_blank" rel="noopener">Scrie-mi pe WhatsApp</a>
+          </div>
+        </aside>
+
+        <div data-reveal-group>
+          <article class="article-card" id="somn" data-reveal>
+            <div class="article-card__meta"><span>Somn</span><span>·</span><span>7 min</span></div>
+            <h3 class="article-card__title"><a href="#somn">Somnul și sănătatea psihică</a></h3>
+            <p class="article-card__text">
+              Somnul nu este o pauză din viața psihică, ci partea ei de întreținere. Articolul tratează
+              relația dintre igiena somnului și reglarea emoțională, ce se întâmplă cu atenția și
+              memoria după nopți scurte repetate, și ce se poate schimba concret în rutina de seară.
+            </p>
+            <p class="fs-xs muted">Legat de: <a href="servicii/terapie-depresie-anxietate.html">terapie depresie–anxietate</a></p>
+          </article>
+
+          <article class="article-card" id="anxietate" data-reveal>
+            <div class="article-card__meta"><span>Anxietate</span><span>·</span><span>9 min</span></div>
+            <h3 class="article-card__title"><a href="#anxietate">Ce este anxietatea?</a></h3>
+            <p class="article-card__text">
+              Unde se termină îngrijorarea normală și unde începe o tulburare anxioasă. Articolul explică
+              mecanismul evitării — motivul pentru care anxietatea se întărește chiar prin lucrurile pe
+              care le facem ca să scăpăm de ea — și ce presupune o intervenție cognitiv-comportamentală.
+            </p>
+            <p class="fs-xs muted">Legat de: <a href="de-ce.html#respiratie">exercițiul de respirație 4-7-8</a></p>
+          </article>
+
+          <article class="article-card" id="depresie" data-reveal>
+            <div class="article-card__meta"><span>Depresie</span><span>·</span><span>11 min</span></div>
+            <h3 class="article-card__title"><a href="#depresie">Cum să prevenim suicidul și să gestionăm depresia</a></h3>
+            <p class="article-card__text">
+              Semnele de alarmă care nu trebuie ignorate, ce se spune și ce nu se spune unui om aflat în
+              criză, cum se cere ajutor pentru altcineva și unde se apelează imediat. Un text pentru cei
+              care trec prin asta și pentru cei care stau lângă cineva care trece.
+            </p>
+            <div class="callout callout--urgent mt-5">
+              {{icon:phone}}
+              <p><b>În criză, sună la 112.</b> Psihoterapia nu este un serviciu de urgență. Pentru sprijin telefonic există și linii dedicate, precum Telefonul Speranței — 0800 801 200.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sunken section--sm">
+    <div class="container">
+      <div class="sec-head sec-head--center">
+        <div class="sec-head__top">
+          <div>
+            <p class="eyebrow eyebrow--bare">Mai departe</p>
+            <h2>De la citit, la făcut</h2>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid--3" data-reveal-group>
+        <article class="card" data-reveal>
+          <span class="card__icon">{{icon:hearts}}</span>
+          <h3 class="card__title"><a href="test-relationare.html">Test de relaționare în cuplu</a></h3>
+          <p class="card__text">Identifică-ți tiparul de relaționare în trei minute.</p>
+          <div class="card__foot"><span>Instrument gratuit</span><span class="card__arrow">{{icon:arrow}}</span></div>
+        </article>
+        <article class="card" data-reveal>
+          <span class="card__icon">{{icon:waves}}</span>
+          <h3 class="card__title"><a href="test-relationare.html#checkin">Check-in emoțional</a></h3>
+          <p class="card__text">Șase întrebări și o recomandare despre serviciul potrivit.</p>
+          <div class="card__foot"><span>Instrument gratuit</span><span class="card__arrow">{{icon:arrow}}</span></div>
+        </article>
+        <article class="card" data-reveal>
+          <span class="card__icon">{{icon:calendar}}</span>
+          <h3 class="card__title"><a href="programare.html">Programează o ședință</a></h3>
+          <p class="card__text">Alegi serviciul, data și ora. Confirmarea vine pe email.</p>
+          <div class="card__foot"><span>În cabinet sau online</span><span class="card__arrow">{{icon:arrow}}</span></div>
+        </article>
+      </div>
+    </div>
+  </section>

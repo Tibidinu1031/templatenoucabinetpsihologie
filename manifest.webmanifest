@@ -1,0 +1,22 @@
+{
+  "name": "Meridian — Cabinet de psihologie",
+  "short_name": "Meridian",
+  "description": "Psihoterapie cognitiv-comportamentală, evaluare psihologică, consiliere și terapie de cuplu — în cabinet sau online.",
+  "lang": "ro",
+  "dir": "ltr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F7F9FC",
+  "theme_color": "#2A55AB",
+  "orientation": "portrait-primary",
+  "categories": ["health", "medical", "lifestyle"],
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Programare", "url": "./programare.html", "description": "Rezervă o ședință" },
+    { "name": "Contact", "url": "./contact.html", "description": "Telefon și WhatsApp" },
+    { "name": "Test de relaționare", "url": "./test-relationare.html", "description": "Identifică-ți tiparul de relaționare" }
+  ]
+}
