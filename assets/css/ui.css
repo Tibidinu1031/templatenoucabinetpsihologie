@@ -805,24 +805,16 @@
   .svc-card:hover::after { transform: scaleX(1); }
 
   /* ======================================================================
-     Signature motif — four complete concentric circles that breathe.
+     Signature motif — a turning tesseract. All 32 edges stay drawn; depth
+     only changes how strongly each one reads. Geometry lives in app.js.
      ====================================================================== */
-  .rings { display: grid; place-items: center; aspect-ratio: 1; inline-size: 100%; }
-  .rings svg { inline-size: 100%; block-size: auto; overflow: visible; }
-  .rings circle {
-    fill: none;
+  .wire { display: grid; place-items: center; aspect-ratio: 1; inline-size: 100%; }
+  .wire svg { inline-size: 100%; block-size: auto; overflow: visible; }
+  .tess line {
     stroke: currentColor;
-    opacity: .2;
-    transform-box: view-box;
-    transform-origin: 50% 50%;
-  }
-  .rings .r1 { opacity: .34; animation: breathe 9s var(--ease-in-out) infinite; }
-  .rings .r2 { opacity: .27; animation: breathe 9s var(--ease-in-out) .6s infinite; }
-  .rings .r3 { opacity: .2;  animation: breathe 9s var(--ease-in-out) 1.2s infinite; }
-  .rings .r4 { opacity: .14; animation: breathe 9s var(--ease-in-out) 1.8s infinite; }
-  @keyframes breathe {
-    0%, 100% { transform: scale(.97); }
-    50%      { transform: scale(1.03); }
+    stroke-width: 1;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
   }
 
   /* ======================================================================
@@ -1430,7 +1422,7 @@
     background: radial-gradient(circle, color-mix(in oklab, var(--c-brand-400) 42%, transparent), transparent 62%);
     z-index: -1;
   }
-  .cta-band__rings {
+  .cta-band__wire {
     position: absolute;
     inset-block-start: 50%;
     inset-inline-end: -6rem;
@@ -1440,7 +1432,7 @@
     opacity: .5;
     z-index: -1;
   }
-  @media (max-width: 62rem) { .cta-band__rings { display: none; } }
+  @media (max-width: 62rem) { .cta-band__wire { display: none; } }
 
   /* ======================================================================
      Footer
@@ -1761,7 +1753,7 @@
   .page-head__inner { position: relative; z-index: 1; }
   .page-head h1 { margin-block-start: 1rem; max-width: 16ch; }
   .page-head .lede { margin-block-start: 1.25rem; max-width: 52ch; }
-  .page-head__rings {
+  .page-head__wire {
     position: absolute;
     inset-block-start: 50%;
     inset-inline-end: -8rem;
@@ -1771,7 +1763,7 @@
     opacity: .5;
     z-index: 0;
   }
-  @media (max-width: 62rem) { .page-head__rings { display: none; } }
+  @media (max-width: 62rem) { .page-head__wire { display: none; } }
 
   .breadcrumb { display: flex; align-items: center; gap: .5rem; font-size: var(--fs-2xs); color: var(--text-muted); flex-wrap: wrap; }
   .breadcrumb a { text-decoration: none; transition: color var(--dur-1) var(--ease-out); }

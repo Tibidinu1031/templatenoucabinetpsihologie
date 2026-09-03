@@ -101,8 +101,11 @@ valori pentru fiecare token semantic.
 **Textură.** Un strat de grain generat cu `feTurbulence` inline, `mix-blend-mode: multiply`
 pe lumină și `overlay` pe întuneric. Zero request-uri suplimentare.
 
-**Motiv grafic.** Cercuri concentrice complete care „respiră" — în hero, în capetele de
-pagină și în benzile de CTA. Sub hero rulează și un caroiaj de coloane abia perceptibil.
+**Motiv grafic.** Un tesseract care se rotește — în capetele de pagină, în benzile de CTA
+și în secțiunea despre cabinet. 16 vârfuri, 32 de muchii, proiectate 4D → 3D → 2D prin două
+împărțiri de perspectivă (`Tesseract` din `app.js`). Toate muchiile rămân desenate; adâncimea
+schimbă doar cât de tare se citește fiecare. Build-ul scrie în markup o poziție fixă, deci
+figura e completă și fără JavaScript. Sub hero rulează un caroiaj de coloane abia perceptibil.
 
 **Mișcare.** Curbe lente, `cubic-bezier(.16, 1, .3, 1)`. Totul respectă
 `prefers-reduced-motion`. Tranziții între documente (`@view-transition`) unde browserul le

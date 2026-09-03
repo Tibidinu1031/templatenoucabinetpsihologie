@@ -74,6 +74,51 @@ const I = {
 };
 /* width/height are intrinsic on purpose: an inline <svg> with only a viewBox
    stretches to fill whatever box it lands in. CSS still overrides these. */
+/* --------------------------------------------------------------------------
+   Signature motif — a tesseract. 16 vertices, 32 edges, projected
+   4D -> 3D -> 2D through two perspective divides. The markup below is one
+   frozen pose so the figure is complete without JavaScript; app.js takes the
+   same geometry and turns it.
+   -------------------------------------------------------------------------- */
+const TESS_V = Array.from({ length: 16 }, (_, i) =>
+  [i & 1 ? 1 : -1, i & 2 ? 1 : -1, i & 4 ? 1 : -1, i & 8 ? 1 : -1]);
+
+const TESS_E = (() => {
+  const e = [];
+  for (let i = 0; i < 16; i++) {
+    for (let b = 0; b < 4; b++) { const j = i ^ (1 << b); if (j > i) e.push([i, j]); }
+  }
+  return e; // 32
+})();
+
+function tessProject([x, y, z, w], a, b) {
+  /* 4D: the XW plane only. That is the turn that folds the inner cube out
+     through the outer one — tumbling in two planes at once just reads as
+     noise at this size. */
+  const ca = Math.cos(a), sa = Math.sin(a);
+  [x, w] = [x * ca - w * sa, x * sa + w * ca];
+  const k4 = 2.6 / (3.1 - w);
+  x *= k4; y *= k4; z *= k4;
+
+  /* 3D: a spin around Y, then a fixed 17° tilt so the cubes read as cubes. */
+  const cb = Math.cos(b), sb = Math.sin(b);
+  [x, z] = [x * cb - z * sb, x * sb + z * cb];
+  const ct = 0.9553, st = 0.2955;
+  [y, z] = [y * ct - z * st, y * st + z * ct];
+
+  const k3 = 2.8 / (3.6 - z);
+  return [x * k3 * 40, y * k3 * 40, (k4 - 0.63) / 0.61];
+}
+
+const tesseract = () => {
+  const p = TESS_V.map((v) => tessProject(v, 0.55, 0.62));
+  const lines = TESS_E.map(([s, e]) => {
+    const o = 0.42 + 0.58 * Math.min(1, Math.max(0, (p[s][2] + p[e][2]) / 2));
+    return `<line x1="${p[s][0].toFixed(2)}" y1="${p[s][1].toFixed(2)}" x2="${p[e][0].toFixed(2)}" y2="${p[e][1].toFixed(2)}" stroke-opacity="${o.toFixed(3)}"/>`;
+  }).join('');
+  return `<svg class="tess" viewBox="-100 -100 200 200" data-tesseract aria-hidden="true">${lines}</svg>`;
+};
+
 /* Marca vizuală — un meridian: cerc plus arce. Neutră, fără inițiale de persoană. */
 const mark = () =>
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M12 3.4c2.9 2.4 2.9 14.8 0 17.2M12 3.4c-2.9 2.4-2.9 14.8 0 17.2M3.7 9.2h16.6M3.7 14.8h16.6"/></svg>`;
@@ -525,8 +570,8 @@ function servicePage(s) {
   const others = SERVICES.filter((o) => o.slug !== s.slug).slice(0, 3);
   return `
   <section class="page-head">
-    <div class="rings page-head__rings" aria-hidden="true">
-      <svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="40" pathLength="100"/><circle class="r2" cx="100" cy="100" r="60" pathLength="100"/><circle class="r3" cx="100" cy="100" r="80" pathLength="100"/><circle class="r4" cx="100" cy="100" r="98" pathLength="100"/></svg>
+    <div class="wire page-head__wire" aria-hidden="true">
+      ${tesseract()}
     </div>
     <div class="container page-head__inner">
       <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -615,8 +660,8 @@ function servicePage(s) {
   <section class="section section--flush-top">
     <div class="container">
       <div class="cta-band">
-        <div class="rings cta-band__rings" aria-hidden="true">
-          <svg viewBox="0 0 200 200"><circle class="r1" cx="100" cy="100" r="40" pathLength="100"/><circle class="r2" cx="100" cy="100" r="62" pathLength="100"/><circle class="r3" cx="100" cy="100" r="82" pathLength="100"/><circle class="r4" cx="100" cy="100" r="99" pathLength="100"/></svg>
+        <div class="wire cta-band__wire" aria-hidden="true">
+          ${tesseract()}
         </div>
         <p class="eyebrow eyebrow--accent">${s.sub}</p>
         <h2 class="mt-4" style="max-width:18ch">Primul pas este cel mai greu. Restul îl facem împreună.</h2>
@@ -644,6 +689,7 @@ const write = (rel, html) => {
 function expand(src, base) {
   return src
     .replace(/\{\{icon:([a-zA-Z]+)(?::([^}]+))?\}\}/g, (_, name, cls) => icon(name, cls || ''))
+    .replace(/\{\{tesseract\}\}/g, () => tesseract())
     .replace(/\{\{base\}\}/g, base)
     .replace(/\{\{person\}\}/g, SITE.person)
     .replace(/\{\{phone\}\}/g, SITE.phone)

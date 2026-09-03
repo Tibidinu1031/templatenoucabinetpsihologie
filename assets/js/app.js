@@ -1067,12 +1067,85 @@
   };
 
   /* ------------------------------------------------------------------ *
+   * Tesseract — the signature motif. A 4-cube turning in the XW and YZ
+   * planes, projected 4D -> 3D -> 2D. The build ships one frozen pose in
+   * the markup, so the figure is already complete if this never runs.
+   * ------------------------------------------------------------------ */
+  const Tesseract = {
+    verts: Array.from({ length: 16 }, (_, i) =>
+      [i & 1 ? 1 : -1, i & 2 ? 1 : -1, i & 4 ? 1 : -1, i & 8 ? 1 : -1]),
+
+    edges: (() => {
+      const e = [];
+      for (let i = 0; i < 16; i++) {
+        for (let b = 0; b < 4; b++) { const j = i ^ (1 << b); if (j > i) e.push([i, j]); }
+      }
+      return e;
+    })(),
+
+    init() {
+      const targets = $$('[data-tesseract]')
+        .map((svg) => ({ svg, lines: $$('line', svg) }))
+        .filter((t) => t.lines.length === this.edges.length);
+      if (!targets.length || prefersReduced()) return;
+
+      /* Off-screen copies keep their last pose instead of burning frames. */
+      const io = 'IntersectionObserver' in window
+        ? new IntersectionObserver((es) => es.forEach((e) => { e.target.dataset.vis = e.isIntersecting ? '1' : '0'; }))
+        : null;
+      targets.forEach((t) => { t.svg.dataset.vis = '1'; if (io) io.observe(t.svg); });
+
+      const t0 = performance.now();
+      const tick = (now) => {
+        const s = (now - t0) / 1000;
+        targets.forEach((t) => { if (t.svg.dataset.vis !== '0') this.paint(t, s * 0.19, s * 0.26); });
+        raf(tick);
+      };
+      raf(tick);
+    },
+
+    /* Rotation, then two perspective divides. Returns the screen point plus a
+       0..1 depth, which only decides how strongly the edge reads. */
+    project([x, y, z, w], a, b) {
+      /* 4D: the XW plane only. That is the turn that folds the inner cube out
+         through the outer one — tumbling in two planes at once just reads as
+         noise at this size. */
+      const ca = Math.cos(a), sa = Math.sin(a);
+      [x, w] = [x * ca - w * sa, x * sa + w * ca];
+      const k4 = 2.6 / (3.1 - w);
+      x *= k4; y *= k4; z *= k4;
+
+      /* 3D: a spin around Y, then a fixed 17° tilt so the cubes read as cubes. */
+      const cb = Math.cos(b), sb = Math.sin(b);
+      [x, z] = [x * cb - z * sb, x * sb + z * cb];
+      const ct = 0.9553, st = 0.2955;
+      [y, z] = [y * ct - z * st, y * st + z * ct];
+
+      const k3 = 2.8 / (3.6 - z);
+      return [x * k3 * 40, y * k3 * 40, (k4 - 0.63) / 0.61];
+    },
+
+    paint(t, a, b) {
+      const p = this.verts.map((v) => this.project(v, a, b));
+      t.lines.forEach((ln, i) => {
+        const [s, e] = this.edges[i];
+        ln.setAttribute('x1', p[s][0].toFixed(2));
+        ln.setAttribute('y1', p[s][1].toFixed(2));
+        ln.setAttribute('x2', p[e][0].toFixed(2));
+        ln.setAttribute('y2', p[e][1].toFixed(2));
+        const d = Math.min(1, Math.max(0, (p[s][2] + p[e][2]) / 2));
+        ln.setAttribute('stroke-opacity', (0.42 + 0.58 * d).toFixed(3));
+      });
+    }
+  };
+
+  /* ------------------------------------------------------------------ *
    * Boot
    * ------------------------------------------------------------------ */
   const boot = () => {
     [Theme, Chrome, Drawer, Reveal, Glow, Counters, Segmented, Copy, Palette,
-      Carousel, Toc, Breathe, CheckIn, Quiz, Booking, ContactForm, Cookies, Share,
-      Map_, DeepLink]
+      Carousel, Toc, Breathe, Tesseract, CheckIn, Quiz, Booking, ContactForm,
+      Cookies, Share, Map_, DeepLink]
       .forEach((m) => { try { m.init(); } catch (err) { console.warn('[ep]', err); } });
     document.documentElement.dataset.ready = 'true';
   };
