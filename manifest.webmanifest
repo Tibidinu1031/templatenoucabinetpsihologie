@@ -7,8 +7,8 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#F7F9FC",
-  "theme_color": "#2A55AB",
+  "background_color": "#F6F6F0",
+  "theme_color": "#0C3F40",
   "orientation": "portrait-primary",
   "categories": ["health", "medical", "lifestyle"],
   "icons": [

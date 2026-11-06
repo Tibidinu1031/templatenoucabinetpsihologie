@@ -57,7 +57,11 @@ const I = {
   shield: '<path d="M10 3.2 15.4 5v4.4c0 3.3-2.2 6.1-5.4 7.4-3.2-1.3-5.4-4.1-5.4-7.4V5Z"/><path d="m7.7 10 1.7 1.7 3-3.2"/>',
   spark: '<path d="M10 3.4 11.5 8 16 9.5 11.5 11 10 15.6 8.5 11 4 9.5 8.5 8Z"/>',
   chat: '<path d="M16.5 9.6c0 3-2.9 5.4-6.5 5.4a8 8 0 0 1-2-.25L4.2 16l.8-2.8A5.1 5.1 0 0 1 3.5 9.6C3.5 6.6 6.4 4.2 10 4.2s6.5 2.4 6.5 5.4Z"/>',
-  arrow: '<path d="M4 10h11M10.5 5.2 15.3 10l-4.8 4.8"/>',
+  arrow: '<path d="M5.2 14.8 14.8 5.2M7 5.2h7.8V13"/>',
+  down: '<path d="M10 3.8v12.4M4.8 11 10 16.2l5.2-5.2"/>',
+  back: '<path d="M16.2 10H3.8M9 4.8 3.8 10 9 15.2"/>',
+  enter: '<path d="M16 4.5v5.7a2 2 0 0 1-2 2H4.5M8.2 8.5l-3.7 3.7 3.7 3.7"/>',
+  asterisk: '<path d="M10 2v16M2 10h16M4.35 4.35l11.3 11.3M15.65 4.35 4.35 15.65"/>',
   chevron: '<path d="m5.5 7.8 4.5 4.4 4.5-4.4"/>',
   chevronR: '<path d="m7.8 4.8 4.4 5.2-4.4 5.2"/>',
   search: '<circle cx="9" cy="9" r="5.2"/><path d="m13 13 3.5 3.5"/>',
@@ -363,7 +367,7 @@ const footer = (base) => `
               <span class="logo__sub">${SITE.practice}</span>
             </span>
           </a>
-          <p class="fs-xs soft mt-4" style="max-width:34ch">Servicii profesionale de psihologie și psihoterapie, pentru adulți și cupluri. Ședințe în cabinet și online.</p>
+          <p class="fs-sm soft mt-4" style="max-width:36ch">Servicii profesionale de psihologie și psihoterapie, pentru adulți și cupluri. Ședințe în cabinet și online.</p>
           <div class="footer__contact">
             <a href="tel:${SITE.phoneRaw}">${icon('phone')}${SITE.phone}</a>
             <a href="${waLink()}" target="_blank" rel="noopener">${icon('whatsapp')}WhatsApp</a>
@@ -410,7 +414,7 @@ const footer = (base) => `
       </div>
 
       <div class="footer__bottom">
-        <p>Toate drepturile rezervate. © 2026 ${SITE.practice} ${SITE.name}.</p>
+        <p>Toate drepturile rezervate. &copy;&#xFE0E; 2026 ${SITE.practice} ${SITE.name}.</p>
         <div class="paylogos">
           <a class="paylogo" href="https://stripe.com" target="_blank" rel="noopener nofollow">Stripe</a>
           <a class="paylogo" href="https://www.visa.com" target="_blank" rel="noopener nofollow">Visa</a>
@@ -428,7 +432,7 @@ const footer = (base) => `
       <a class="mobile-bar__icon" href="tel:${SITE.phoneRaw}" aria-label="Sună la ${SITE.phone}">${icon('phone')}</a>
       <a class="mobile-bar__icon" href="${waLink()}" target="_blank" rel="noopener" aria-label="Scrie pe WhatsApp">${icon('whatsapp')}</a>
       <span class="mobile-bar__sep" aria-hidden="true"></span>
-      <a class="mobile-bar__cta" href="${base}programare.html">Programare</a>
+      <a class="mobile-bar__cta" href="${base}programare.html">Programare ${icon('arrow')}</a>
     </div>
   </nav>
 
@@ -452,8 +456,8 @@ const footer = (base) => `
     </div>
     <div class="palette__results" data-palette-results></div>
     <div class="palette__foot">
-      <span><kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> navighează</span>
-      <span><kbd class="kbd">↵</kbd> deschide</span>
+      <span><kbd class="kbd">${icon('up')}<span class="visually-hidden">Sus</span></kbd> <kbd class="kbd">${icon('down')}<span class="visually-hidden">Jos</span></kbd> navighează</span>
+      <span><kbd class="kbd">${icon('enter')}<span class="visually-hidden">Enter</span></kbd> deschide</span>
       <span style="margin-inline-start:auto">${SITE.name}</span>
     </div>
   </dialog>`;
@@ -473,8 +477,7 @@ function layout({ title, desc, active, base = '', content, schema = '', canonica
 <title>${t}</title>
 <meta name="description" content="${desc}">
 <meta name="author" content="${SITE.name} — ${SITE.practice}">
-<meta name="theme-color" content="#F7F9FC" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#08101B" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0C3F40">
 ${SITE.origin ? `<link rel="canonical" href="${abs(canonical || '')}">` : ''}
 
 <meta property="og:type" content="website">
@@ -490,9 +493,7 @@ ${SITE.origin ? `<meta property="og:url" content="${abs(canonical || '')}">
 <link rel="apple-touch-icon" href="${base}assets/img/favicon.svg">
 <link rel="manifest" href="${base}manifest.webmanifest">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,300..700;1,300..700&display=swap">
+<link rel="stylesheet" href="${base}assets/css/fonts.css">
 <link rel="stylesheet" href="${base}assets/css/main.css">
 <link rel="stylesheet" href="${base}assets/css/ui.css">
 
@@ -516,7 +517,7 @@ ${SITE.origin ? `<meta property="og:url" content="${abs(canonical || '')}">
     } catch (e) {}
   })();
 </script>
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.no-js-hide{display:none}</style></noscript>
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}.no-js-hide{display:none}.mobile-bar{transform:none!important;opacity:1!important;pointer-events:auto!important}</style></noscript>
 ${schema}
 </head>
 <body>
@@ -580,11 +581,11 @@ function servicePage(s) {
         <span aria-current="page">${s.title}</span>
       </nav>
       <p class="eyebrow mt-5">${s.sub}</p>
-      <h1>${s.title}</h1>
+      <h1><em>${s.title}</em></h1>
       <p class="lede">${s.lede}</p>
       <div class="cluster mt-6">
         <a class="btn btn--primary" href="../programare.html?s=${s.slug}">Programează o ședință ${icon('arrow', 'btn__icon btn__icon--arrow')}</a>
-        <a class="btn btn--ghost" href="../contact.html">Am o întrebare</a>
+        <a class="text-link" href="../contact.html">Am o întrebare ${icon('arrow')}</a>
       </div>
     </div>
   </section>
@@ -593,7 +594,7 @@ function servicePage(s) {
     <div class="container">
       <div class="rail">
         <aside class="rail__aside">
-          <p class="eyebrow eyebrow--bare">Pe scurt</p>
+          <p class="eyebrow">Pe scurt</p>
           <dl class="spec mt-5">
             <div class="spec__row"><dt>Durată</dt><dd>${s.duration}</dd></div>
             <div class="spec__row"><dt>Format</dt><dd>${s.format}</dd></div>
@@ -641,7 +642,7 @@ function servicePage(s) {
         <div class="sec-head__top">
           <div>
             <p class="eyebrow">Continuă</p>
-            <h2>Alte servicii</h2>
+            <h2>Alte <em>servicii</em></h2>
           </div>
           <a class="link" href="../servicii.html">Toate serviciile ${icon('arrow')}</a>
         </div>
@@ -664,10 +665,10 @@ function servicePage(s) {
           ${tesseract()}
         </div>
         <p class="eyebrow eyebrow--accent">${s.sub}</p>
-        <h2 class="mt-4" style="max-width:18ch">Primul pas este cel mai greu. Restul îl facem împreună.</h2>
+        <h2 class="mt-4">Primul pas este cel mai greu. <em>Restul îl facem împreună.</em></h2>
         <div class="cluster mt-6">
           <a class="btn btn--inverse btn--lg" href="../programare.html?s=${s.slug}">Programează ${s.title.toLowerCase()} ${icon('arrow', 'btn__icon btn__icon--arrow')}</a>
-          <a class="btn btn--ghost btn--lg" href="tel:${SITE.phoneRaw}">${icon('phone', 'btn__icon')} ${SITE.phone}</a>
+          <a class="contact-phone" href="tel:${SITE.phoneRaw}">${SITE.phone} ${icon('arrow')}</a>
         </div>
       </div>
     </div>
@@ -698,14 +699,21 @@ function expand(src, base) {
     .replace(/\{\{email\}\}/g, SITE.email)
     .replace(/\{\{address\}\}/g, SITE.address)
     .replace(/\{\{hours\}\}/g, SITE.hours)
-    .replace(/\{\{services\}\}/g, () => SERVICES.map((s, i) => `
-        <article class="card svc-card" data-reveal style="--i-color:${i % 2 ? 'var(--accent)' : 'var(--brand)'}">
-          <span class="card__icon">${icon(s.icon)}</span>
-          <p class="card__num">S/${String(i + 1).padStart(2, '0')}</p>
-          <h3 class="card__title"><a href="${base}servicii/${s.slug}.html">${s.title}</a></h3>
-          <p class="card__text">${s.short}</p>
-          <div class="card__foot"><span>${s.duration} · ${s.format}</span><span class="card__arrow">${icon('arrow')}</span></div>
-        </article>`).join('\n'))
+    .replace(/\{\{services\}\}/g, () => `<div class="service-list" data-reveal-group>${SERVICES.map((s, i) => `
+        <details class="service" name="services" data-reveal${i === 0 ? ' open' : ''}>
+          <summary>
+            <span class="service-num">S/${String(i + 1).padStart(2, '0')}</span>
+            <span class="service-icon">${icon(s.icon)}</span>
+            <h3>${s.title}</h3>
+            <span class="service-tag">${s.duration} · ${s.format}</span>
+            <span class="plus" aria-hidden="true"></span>
+          </summary>
+          <div class="service-content">
+            <p>${s.short}</p>
+            <a class="text-link" href="${base}servicii/${s.slug}.html">Vezi detalii ${icon('arrow')}</a>
+          </div>
+        </details>`).join('\n')}
+      </div>`)
     .replace(/\{\{serviceOptions\}\}/g, () => SERVICES.map((s) => `
             <button class="option" type="button" data-service="${s.slug}" aria-pressed="false">
               <span class="option__icon">${icon(s.icon)}</span>

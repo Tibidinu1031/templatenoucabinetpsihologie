@@ -39,13 +39,10 @@
         btn.addEventListener('click', () => this.toggle(btn));
         this.sync(btn);
       });
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-        if (!localStorage.getItem(this.key)) $$('[data-theme-toggle]').forEach((b) => this.sync(b));
-      });
     },
+    /* The site opens light for everyone; dark is an explicit choice. */
     current() {
-      return document.documentElement.dataset.theme ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      return document.documentElement.dataset.theme || 'light';
     },
     toggle(btn) {
       const next = this.current() === 'dark' ? 'light' : 'dark';
@@ -77,6 +74,7 @@
       const bar = $('[data-progress]');
       const fab = $('[data-to-top]');
       const dock = $('[data-mobile-bar]');
+      const heroScreen = $('.hero-screen');
       if (!header && !bar && !fab && !dock) return;
 
       let ticking = false;
@@ -93,7 +91,10 @@
            so it never competes with the content for the bottom of the screen. */
         if (dock) {
           const delta = y - lastY;
-          if (y < 120) dock.dataset.hidden = 'false';
+          /* The home page's first screen has its own actions and a strip along
+             the bottom edge, which the dock would otherwise sit on top of. */
+          if (heroScreen && y < window.innerHeight * 0.5) dock.dataset.hidden = 'true';
+          else if (y < 120) dock.dataset.hidden = 'false';
           else if (delta > 6) dock.dataset.hidden = 'true';
           else if (delta < -6) dock.dataset.hidden = 'false';
         }
@@ -453,18 +454,62 @@
         const scope = track.dataset.carousel;
         const prev = $(`[data-carousel-prev="${scope}"]`);
         const next = $(`[data-carousel-next="${scope}"]`);
+        const position = $(`[data-carousel-position="${scope}"]`);
+        const items = Array.from(track.children);
+        const pad = (n) => String(n).padStart(2, '0');
         const step = () => {
           const card = track.firstElementChild;
-          return card ? card.getBoundingClientRect().width + 24 : track.clientWidth * 0.8;
+          const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+          return card ? card.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
         };
         const update = () => {
           if (prev) prev.disabled = track.scrollLeft < 8;
           if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+          if (!position) return;
+          /* Which cards are actually in view, as "01 — 03 / 04". */
+          const box = track.getBoundingClientRect();
+          const seen = items
+            .map((el, i) => ({ i, r: el.getBoundingClientRect() }))
+            .filter(({ r }) => Math.min(r.right, box.right) - Math.max(r.left, box.left) > r.width * 0.6);
+          if (!seen.length) return;
+          const first = seen[0].i + 1, last = seen[seen.length - 1].i + 1;
+          const label = `${pad(first)}${first === last ? '' : ` — ${pad(last)}`} / ${pad(items.length)}`;
+          if (position.textContent !== label) position.textContent = label;
         };
-        if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-        if (next) next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+        const behavior = () => (prefersReduced() ? 'auto' : 'smooth');
+        if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: behavior() }));
+        if (next) next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: behavior() }));
         track.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(update);
         update();
+      });
+    }
+  };
+
+  /* ------------------------------------------------------------------ *
+   * Marquee — the strip under the hero, running to the left. The markup
+   * holds the content once; the copy that closes the loop is added here
+   * and hidden from assistive tech. Without motion nothing is added and
+   * the strip simply stays put.
+   * ------------------------------------------------------------------ */
+  const Marquee = {
+    pxPerSecond: 36,
+    init() {
+      $$('[data-marquee]').forEach((root) => {
+        if (prefersReduced()) return;
+        const track = root.firstElementChild;
+        const group = track && track.firstElementChild;
+        if (!group) return;
+        const copy = group.cloneNode(true);
+        copy.setAttribute('aria-hidden', 'true');
+        track.append(copy);
+        /* Same reading speed on a phone and on a wide monitor. */
+        const pace = () => root.style.setProperty('--marquee-dur', `${(group.offsetWidth / this.pxPerSecond).toFixed(1)}s`);
+        pace();
+        window.addEventListener('resize', pace);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(pace);
+        root.dataset.marqueeOn = 'true';
       });
     }
   };
@@ -1144,7 +1189,7 @@
    * ------------------------------------------------------------------ */
   const boot = () => {
     [Theme, Chrome, Drawer, Reveal, Glow, Counters, Segmented, Copy, Palette,
-      Carousel, Toc, Breathe, Tesseract, CheckIn, Quiz, Booking, ContactForm,
+      Carousel, Marquee, Toc, Breathe, Tesseract, CheckIn, Quiz, Booking, ContactForm,
       Cookies, Share, Map_, DeepLink]
       .forEach((m) => { try { m.init(); } catch (err) { console.warn('[ep]', err); } });
     document.documentElement.dataset.ready = 'true';

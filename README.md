@@ -17,7 +17,7 @@ site-ul și pot fi urcate direct pe orice hosting.
 node _build/serve.js
 ```
 
-Apoi deschide <http://localhost:4173>. Serverul e un fișier de 45 de linii, fără npm install.
+Apoi deschide <http://localhost:4173>. Serverul e un fișier de 46 de linii, fără npm install.
 
 ## 2. Regenerare după modificări de conținut
 
@@ -42,9 +42,11 @@ node _build/check.js
 ├─ test-relationare.html  legal.html
 ├─ servicii/                 ← 6 pagini generate din date
 ├─ assets/
-│  ├─ css/main.css           ← tokens, reset, bază, layout, utilitare
+│  ├─ css/fonts.css          ← @font-face pentru fonturile locale
+│  ├─ css/main.css           ← tokens, reset, bază, layout, utilitare, fundal
 │  ├─ css/ui.css             ← componente + stiluri de pagină
 │  ├─ js/app.js              ← toate modulele de interacțiune
+│  ├─ fonts/                 ← DM Sans și Manrope, găzduite local
 │  └─ img/                   ← portret, favicon, imagine OG (SVG)
 ├─ _build/
 │  ├─ build.js               ← generatorul (chrome-ul comun + datele serviciilor)
@@ -88,26 +90,43 @@ degradează elegant fără ele:
 
 ## 4. Sistemul de design
 
-**Tipografie.** Bricolage Grotesque (variabil, cu axele `opsz` și `wdth`) pentru titluri,
-Plus Jakarta Sans pentru text, JetBrains Mono pentru etichete și numere. Scară fluidă pe
-`clamp()`, de la 360px la 1440px, fără breakpoint-uri de font. Fața de titlu nu are italic:
-accentul se face din lățime, culoare și un filet, nu dintr-o oblică sintetică.
+**Format.** Layout editorial: etichete de secțiune numerotate (`01 / Servicii`), titluri mari
+cu a doua parte accentuată, liste de servicii care se deschid pe loc pe fundal teal închis,
+benzi de culoare între secțiuni, colțuri aproape drepte cu un singur colț tăiat mare.
 
-**Culoare.** Două rampe — albastru cerneală (brand) și chihlimbar (accent) — peste o neutră
-de porțelan, răcită spre brand.
-Fără alb pur, fără negru pur. Tema întunecată e reiluminată, nu inversată: are propriile
-valori pentru fiecare token semantic.
+**Primul ecran.** Pe pagina principală, bara de sus, header-ul, hero-ul și banda de sub el ocupă
+exact un ecran (`.hero-screen`, `100svh`). Textul și spațiile din hero urmează și înălțimea, nu
+doar lățimea. Înălțimea e una minimă, nu fixă: pe un ecran extrem de mic, textul împinge banda în
+jos în loc să fie tăiat.
 
-**Textură.** Un strat de grain generat cu `feTurbulence` inline, `mix-blend-mode: multiply`
-pe lumină și `overlay` pe întuneric. Zero request-uri suplimentare.
+**Fără emoji.** Pictogramele sunt toate SVG, deci un telefon nu le poate înlocui cu emoji colorate.
+Singurul caracter care ar putea fi afișat ca emoji, `©`, e forțat la varianta de text (`U+FE0E`),
+iar `font-variant-emoji: text` din `main.css` e o protecție în plus. Pentru un simbol nou, folosește
+`{{icon:nume}}`, nu un caracter Unicode.
+
+**Tipografie.** Manrope pentru titluri, DM Sans pentru text și etichete, ambele găzduite local
+în `assets/fonts/`, fără request-uri către terți. Accentul din `h1` este o linie portocalie
+trasă sub cuvinte, cel din `h2` o culoare.
+
+**Culoare.** Teal închis (`#0C3F40`) și portocaliu (`#FF7953`) peste hârtie (`#F6F6F0`) și
+salvie (`#E8EEE6`). Pe suprafețe deschise, textul accentuat folosește o variantă ruginie
+(`#B94B2D`), pentru contrast. Tema întunecată e reiluminată, nu inversată, și se activează
+doar din butonul din header; site-ul se deschide luminos pentru toată lumea.
+
+**Fundal.** Un ornament de linii și puncte, strict decorativ (`--pat-tile` în `main.css`).
+Tile-ul e oglindit pe ambele axe și ancorat în centrul paginii, deci tot câmpul rămâne simetric
+la orice lățime. E complet pe margini și translucid în mijloc (`--pat-fade`), ca să rămână vizibil
+fără să concureze cu textul. E o mască, nu o imagine: culoarea vine din `--pat-color`, așa că aceeași figură funcționează pe
+hârtie, pe salvie și pe teal. Intensitatea se reglează din `--pat-opacity`, densitatea din
+`--pat-size`.
 
 **Motiv grafic.** Un tesseract care se rotește — în capetele de pagină, în benzile de CTA
 și în secțiunea despre cabinet. 16 vârfuri, 32 de muchii, proiectate 4D → 3D → 2D prin două
 împărțiri de perspectivă (`Tesseract` din `app.js`). Toate muchiile rămân desenate; adâncimea
 schimbă doar cât de tare se citește fiecare. Build-ul scrie în markup o poziție fixă, deci
-figura e completă și fără JavaScript. Sub hero rulează un caroiaj de coloane abia perceptibil.
+figura e completă și fără JavaScript.
 
-**Mișcare.** Curbe lente, `cubic-bezier(.16, 1, .3, 1)`. Totul respectă
+**Mișcare.** Tranziții scurte și apariții discrete la scroll. Totul respectă
 `prefers-reduced-motion`. Tranziții între documente (`@view-transition`) unde browserul le
 suportă.
 
@@ -131,12 +150,18 @@ diacritice: „relatie" găsește „relaționare".
 
 **Interfață** — temă întunecată/luminoasă salvată local și aplicată înainte de primul paint;
 mega-meniu pentru servicii; drawer mobil cu focus trap; bară de progres la scroll; cuprins
-care se activează la scroll; notificări discrete; copiere în clipboard; cookie banner cu
-opțiune reală „doar esențiale".
+care se activează la scroll; carusel de citate cu indicator de poziție; notificări discrete;
+copiere în clipboard; cookie banner cu opțiune reală „doar esențiale".
 
-**Dock mobil** — pe ecrane sub 768px, un dock flotant rotunjit (nu o bară pe toată lățimea):
-două butoane-iconiță pentru telefon și WhatsApp, plus un buton „Programare". Se retrage
-la scroll în jos și reapare la scroll în sus, ca să nu concureze cu conținutul.
+**Bandă în mișcare** — banda de sub hero rulează continuu spre stânga (`Marquee` din `app.js`),
+cu aceeași viteză pe orice ecran, și se oprește la hover. Conținutul e o singură dată în markup;
+copia care închide bucla e adăugată din JavaScript și ascunsă cititoarelor de ecran. Cu
+`prefers-reduced-motion` sau fără JavaScript, banda stă pe loc și se poate derula manual.
+
+**Bară mobilă** — pe ecrane sub 768px, o bară flotantă: două butoane-iconiță pentru telefon
+și WhatsApp, plus un buton portocaliu „Programare". Se retrage la scroll în jos și reapare la
+scroll în sus, ca să nu concureze cu conținutul. Pe pagina principală așteaptă să treci de primul
+ecran, ca să nu acopere banda.
 
 **Tehnic** — Schema.org (`Psychologist` + `LocalBusiness`, `Service` pe fiecare serviciu, cu
 câmpurile necunoscute omise, nu inventate); OpenGraph; manifest PWA cu shortcut-uri;
@@ -144,7 +169,7 @@ accesibilitate (skip link, `:focus-visible`, ARIA, un singur `h1`/pagină, `alt`
 
 **Robustețe** — dacă JS-ul cade sau `IntersectionObserver` / `requestAnimationFrame` nu
 livrează, conținutul rămâne vizibil și cifrele animate afișează valoarea finală
-(`<noscript>` + timeout-uri de siguranță). 999 de linkuri interne verificate automat, 0 rupte.
+(`<noscript>` + timeout-uri de siguranță). 1018 linkuri interne verificate automat, 0 rupte.
 
 ---
 
@@ -159,9 +184,11 @@ livrează, conținutul rămâne vizibil și cifrele animate afișează valoarea 
 3. **Fotografia de portret.** `assets/img/portrait.svg` este o ilustrație substituent.
    Înlocuiește-o cu o fotografie reală (JPG/WebP, ~800×1000) și schimbă `src` în
    `_build/pages/index.html` și `despre-mine.html`. În hero, rama se întinde pe toată
-   înălțimea coloanei de text și decupează `cover` într-o formă asimetrică — alege o poză cu
-   subiectul centrat și cu spațiu liber în lateral, ca decupajul să nu taie umerii. Reglajul
-   fin se face din `object-position` pe `.portrait__frame img`.
+   înălțimea coloanei de text și decupează `cover`, cu un colț tăiat mare — alege o poză cu
+   subiectul centrat și cu spațiu liber în lateral, ca decupajul să nu taie umerii. Peste
+   imagine stau textul de sus, ștampila rotundă și legenda, deci partea de sus și cea de jos a
+   pozei trebuie să rămână liniștite. Reglajul fin se face din `object-position` pe
+   `.hero-portrait` și pe `.portrait__frame img`.
 4. **Programul de lucru** afișat (L–S 09:00–21:00, iar pe pagina de contact L–V 09:00–21:00 /
    S 10:00–16:00) este o presupunere. Confirmă-l sau modifică `SITE.hours` și
    `_build/pages/contact.html`.

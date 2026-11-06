@@ -12,178 +12,160 @@
    -------------------------------------------------------------------------- */
 @layer tokens {
   :root {
-    /* Brand ramp — ink blue. Steady and awake; cool without turning clinical. */
-    --c-brand-50:  #EFF4FD;
-    --c-brand-100: #DEE9FB;
-    --c-brand-200: #BBD1F5;
-    --c-brand-300: #8FB2EC;
-    --c-brand-400: #5D8DDF;
-    --c-brand-500: #3A6DCB;
-    --c-brand-600: #2A55AB;
-    --c-brand-700: #204288;
-    --c-brand-800: #183164;
-    --c-brand-900: #102043;
-
-    /* Accent ramp — amber. Warmth and humanity, used sparingly. */
-    --c-amber-100: #FCEEDB;
-    --c-amber-200: #F6D9AF;
-    --c-amber-300: #EDBB79;
-    --c-amber-400: #E19E4F;
-    --c-amber-500: #C17C2B;
-    --c-amber-600: #9B6220;
-
-    /* Neutrals — porcelain, cooled toward the brand. Never pure white or black. */
-    --c-paper:    #F7F9FC;
-    --c-paper-2:  #EFF3F8;
-    --c-paper-3:  #E3E9F2;
-    --c-white:    #FFFFFF;
-    --c-ink:      #131A24;
-    --c-ink-2:    #41505F;
-    --c-ink-3:    #6F8195;
-    --c-hairline: #E0E7F0;
+    /* Deep teal and warm orange over a soft paper. Nothing pure white or black. */
+    --c-deep:      #0C3F40;
+    --c-deep-2:    #1E5858;
+    --c-deep-3:    #072F30;
+    --c-ink:       #123E40;
+    --c-paper:     #F6F6F0;
+    --c-paper-2:   #E8EEE6;
+    --c-paper-3:   #E5EBE2;
+    --c-raised:    #FBFBF7;
+    --c-hairline:  #CFD7D1;
+    --c-sage:      #649084;
+    --c-sage-2:    #ADC2BA;
+    --c-orange:    #FF7953;
+    --c-orange-2:  #FF9576;
+    --c-rust:      #B94B2D;
+    --c-rust-2:    #A73B22;
 
     /* Semantic — light */
     --bg:           var(--c-paper);
     --bg-sunken:    var(--c-paper-2);
-    --bg-raised:    var(--c-white);
-    --bg-inverse:   var(--c-brand-900);
-    --surface:      var(--c-white);
-    --surface-soft: var(--c-brand-50);
+    --bg-raised:    var(--c-raised);
+    --bg-inverse:   var(--c-deep);
+    --surface:      var(--c-raised);
+    --surface-soft: var(--c-paper-3);
     --text:         var(--c-ink);
-    --text-soft:    var(--c-ink-2);
-    --text-muted:   var(--c-ink-3);
-    --text-inverse: #F2F6FB;
+    --text-soft:    #48635D;
+    --text-muted:   #586F68;
+    --text-inverse: var(--c-paper);
     --line:         var(--c-hairline);
-    --line-strong:  #C4CFDD;
-    --brand:        var(--c-brand-600);
-    --brand-hover:  var(--c-brand-700);
-    --brand-soft:   var(--c-brand-100);
-    --brand-text:   var(--c-brand-700);
-    --accent:       var(--c-amber-500);
-    --accent-soft:  var(--c-amber-100);
-    --focus:        var(--c-amber-500);
+    --line-strong:  #A9BAB2;
+    --brand:        var(--c-deep);
+    --brand-hover:  var(--c-deep-2);
+    --brand-soft:   var(--c-paper-2);
+    --brand-text:   var(--c-deep);
+    --on-brand:     #FFFFFF;
+    --accent:       var(--c-rust);
+    --accent-soft:  #FBEBE4;
+    --focus:        var(--c-orange);
 
-    /* Elevation — hairline plus diffuse light, never a shadow slab. */
-    --shadow-xs: 0 1px 2px rgba(19, 26, 36, .05);
-    --shadow-sm: 0 1px 2px rgba(19, 26, 36, .04), 0 4px 12px -4px rgba(19, 26, 36, .07);
-    --shadow-md: 0 2px 4px rgba(19, 26, 36, .03), 0 12px 28px -10px rgba(19, 26, 36, .11);
-    --shadow-lg: 0 4px 8px rgba(19, 26, 36, .03), 0 28px 60px -20px rgba(19, 26, 36, .18);
+    /* Elevation — a hairline plus very diffuse light. */
+    --shadow-xs: 0 1px 2px #123E400A;
+    --shadow-sm: 0 4px 24px #123E4008;
+    --shadow-md: 0 12px 35px #123E4010;
+    --shadow-lg: 0 24px 100px #052A4040;
 
     /* Type */
-    --font-display: "Bricolage Grotesque", "Inter Tight", "Segoe UI", system-ui, sans-serif;
-    --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --font-display: "Manrope", "Segoe UI", system-ui, sans-serif;
+    --font-body: "DM Sans", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
 
     --fs-3xs: .6875rem;
     --fs-2xs: .75rem;
     --fs-xs:  .8125rem;
     --fs-sm:  .875rem;
-    --fs-base: clamp(1rem, .97rem + .13vw, 1.0625rem);
-    --fs-md:  clamp(1.0625rem, 1rem + .3vw, 1.1875rem);
-    --fs-lg:  clamp(1.25rem, 1.17rem + .35vw, 1.5rem);
-    --fs-xl:  clamp(1.5rem, 1.35rem + .65vw, 1.9375rem);
-    --fs-2xl: clamp(1.875rem, 1.6rem + 1.2vw, 2.75rem);
-    --fs-3xl: clamp(2.25rem, 1.8rem + 2vw, 3.75rem);
-    --fs-4xl: clamp(2.75rem, 2rem + 3.3vw, 5.25rem);
+    --fs-base: 1rem;
+    --fs-md:  1.0625rem;
+    --fs-lg:  clamp(1.1875rem, 1.1rem + .35vw, 1.375rem);
+    --fs-xl:  clamp(1.5rem, 1.3rem + .8vw, 2rem);
+    --fs-2xl: clamp(2.1875rem, 4vw, 3.625rem);
+    --fs-3xl: clamp(2.375rem, 4.4vw, 4.125rem);
+    --fs-4xl: clamp(3rem, 5.45vw, 5.1875rem);
 
-    --lh-tight: 1.04;
-    --lh-snug: 1.16;
+    --lh-tight: 1.075;
+    --lh-snug: 1.14;
     --lh-normal: 1.5;
-    --lh-relaxed: 1.72;
+    --lh-relaxed: 1.65;
 
-    --tracking-tight: -.022em;
+    --tracking-tight: -.043em;
     --tracking-wide: .06em;
-    --tracking-wider: .16em;
+    --tracking-wider: .135em;
 
     --sp-1: .25rem;  --sp-2: .5rem;   --sp-3: .75rem;  --sp-4: 1rem;
     --sp-5: 1.5rem;  --sp-6: 2rem;    --sp-7: 2.5rem;  --sp-8: 3rem;
     --sp-9: 4rem;    --sp-10: 5rem;   --sp-11: 6.5rem; --sp-12: 8rem;
-    --section-y: clamp(4rem, 3rem + 6vw, 9rem);
-    --section-y-sm: clamp(3rem, 2.4rem + 3vw, 5.5rem);
+    --section-y: clamp(3.0625rem, 1.9rem + 4.2vw, 5.3125rem);
+    --section-y-sm: clamp(2.75rem, 2rem + 3vw, 4.25rem);
 
     --measure: 68ch;
     --measure-narrow: 54ch;
-    --container: 78rem;
-    --container-wide: 88rem;
-    --container-text: 42rem;
-    --gutter: clamp(1.25rem, .8rem + 2.2vw, 3rem);
+    --container: 105rem;
+    --container-text: 44rem;
+    --gutter: clamp(1.25rem, 6vw, 6.25rem);
+    --edge: clamp(1.25rem, 4vw, 4.5rem);
 
-    --r-xs: 3px; --r-sm: 7px; --r-md: 10px; --r-lg: 16px; --r-xl: 26px;
+    /* Almost-square corners; one large cut corner is the signature. */
+    --r-xs: 3px; --r-sm: 3px; --r-md: 4px; --r-lg: 5px; --r-xl: 5px;
     --r-full: 999px;
+    --r-cut: 4px 4px 38px 4px;
+    --r-cut-lg: 5px 5px 70px 5px;
 
     --ease-out: cubic-bezier(.16, 1, .3, 1);
     --ease-in-out: cubic-bezier(.65, 0, .35, 1);
     --ease-spring: cubic-bezier(.34, 1.36, .5, 1);
-    --dur-1: 140ms; --dur-2: 240ms; --dur-3: 420ms; --dur-4: 720ms; --dur-5: 1200ms;
+    --dur-1: 140ms; --dur-2: 220ms; --dur-3: 420ms; --dur-4: 650ms; --dur-5: 1200ms;
 
-    --header-h: 74px;
+    /* The first screen is built from these: top bar + header + hero + strip. */
+    --topbar-h: 2.375rem;
+    --nav-h: 106px;
+    --chrome-h: calc(var(--topbar-h) + var(--nav-h) + 1px);
+    --header-h: 82px;
     --z-header: 100; --z-drawer: 200; --z-overlay: 300; --z-toast: 400;
 
-    /* Paper grain, generated inline — zero extra requests. */
-    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+    /* Eight-spoked mark, used wherever a stray decorative star appears. */
+    --asterisk: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.7' stroke-linecap='round'%3E%3Cpath d='M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1'/%3E%3C/svg%3E");
+
+    /* ----------------------------------------------------------------------
+       Background ornament. One tile, mirrored on both axes, so anchoring it
+       to the centre of the page keeps the whole field symmetric at any width.
+       It is a mask: the colour comes from --pat-color, so the same figure
+       works on paper, on sage and on the deep teal surfaces.
+       ---------------------------------------------------------------------- */
+    --pat-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath d='M120 0 240 120 120 240 0 120Z'/%3E%3Cpath stroke-opacity='.6' d='M120 48 192 120 120 192 48 120Z'/%3E%3Cpath stroke-opacity='.32' d='M0 0 48 120M0 0 120 48M240 0 192 120M240 0 120 48M0 240 48 120M0 240 120 192M240 240 192 120M240 240 120 192'/%3E%3Ccircle cx='120' cy='120' r='17' stroke-opacity='.6'/%3E%3C/g%3E%3Cg%3E%3Ccircle cx='120' cy='120' r='3'/%3E%3Ccircle cx='0' cy='0' r='3.4'/%3E%3Ccircle cx='240' cy='0' r='3.4'/%3E%3Ccircle cx='0' cy='240' r='3.4'/%3E%3Ccircle cx='240' cy='240' r='3.4'/%3E%3Ccircle cx='120' cy='0' r='2.6'/%3E%3Ccircle cx='120' cy='240' r='2.6'/%3E%3Ccircle cx='0' cy='120' r='2.6'/%3E%3Ccircle cx='240' cy='120' r='2.6'/%3E%3Ccircle cx='120' cy='48' r='2'/%3E%3Ccircle cx='120' cy='192' r='2'/%3E%3Ccircle cx='48' cy='120' r='2'/%3E%3Ccircle cx='192' cy='120' r='2'/%3E%3C/g%3E%3C/svg%3E");
+    --pat-size: 240px;
+    /* Full at both edges and translucent, but still present, across the middle. */
+    --pat-fade: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, .74) 22%, rgba(0, 0, 0, .56) 50%, rgba(0, 0, 0, .74) 78%, #000 100%);
+    --pat-color: var(--c-ink);
+    --pat-opacity: .24;
   }
 
-  /* Dark theme — re-lit, not inverted. */
+  /* Dark theme, reachable from the header toggle — re-lit, not inverted. */
   :root[data-theme="dark"] {
-    --bg:           #08101B;
-    --bg-sunken:    #050B14;
-    --bg-raised:    #101B28;
-    --bg-inverse:   #E9EFF6;
-    --surface:      #101B28;
-    --surface-soft: #17263A;
-    --text:         #E9EFF6;
-    --text-soft:    #B4C3D3;
-    --text-muted:   #8597AC;
-    --text-inverse: #08101B;
-    --line:         #22313F;
-    --line-strong:  #35485C;
-    --brand:        #8DB4F2;
-    --brand-hover:  #AECAF8;
-    --brand-soft:   #14263E;
-    --brand-text:   #9CBFF5;
-    --accent:       #E8B274;
-    --accent-soft:  #2A2013;
-    --focus:        #E8B274;
-    --c-paper-2:    #050B14;
-    --c-paper-3:    #0D1725;
+    --bg:           #08282A;
+    --bg-sunken:    #062022;
+    --bg-raised:    #0F3537;
+    --bg-inverse:   #0E4647;
+    --surface:      #0F3537;
+    --surface-soft: #144244;
+    --text:         #F0F2EA;
+    --text-soft:    #BFD0C9;
+    --text-muted:   #9DB5AB;
+    --text-inverse: #F6F6F0;
+    --line:         #2A5051;
+    --line-strong:  #426362;
+    --brand:        var(--c-orange);
+    --brand-hover:  var(--c-orange-2);
+    --brand-soft:   #144244;
+    --brand-text:   #A9D3C6;
+    --on-brand:     var(--c-ink);
+    --accent:       var(--c-orange-2);
+    --accent-soft:  #2B3A33;
+    --focus:        var(--c-orange);
     --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35), 0 4px 12px -4px rgba(0, 0, 0, .5);
-    --shadow-md: 0 2px 4px rgba(0, 0, 0, .3), 0 12px 28px -10px rgba(0, 0, 0, .6);
-    --shadow-lg: 0 4px 8px rgba(0, 0, 0, .3), 0 28px 60px -20px rgba(0, 0, 0, .75);
+    --shadow-sm: 0 4px 24px rgba(0, 0, 0, .25);
+    --shadow-md: 0 12px 35px rgba(0, 0, 0, .35);
+    --shadow-lg: 0 24px 100px rgba(0, 0, 0, .6);
+    --pat-color: #F6F6F0;
+    --pat-opacity: .09;
     color-scheme: dark;
   }
-  :root[data-theme="light"] { color-scheme: light; }
+  :root { color-scheme: light; }
 
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg:           #08101B;
-      --bg-sunken:    #050B14;
-      --bg-raised:    #101B28;
-      --bg-inverse:   #E9EFF6;
-      --surface:      #101B28;
-      --surface-soft: #17263A;
-      --text:         #E9EFF6;
-      --text-soft:    #B4C3D3;
-      --text-muted:   #8597AC;
-      --text-inverse: #08101B;
-      --line:         #22313F;
-      --line-strong:  #35485C;
-      --brand:        #8DB4F2;
-      --brand-hover:  #AECAF8;
-      --brand-soft:   #14263E;
-      --brand-text:   #9CBFF5;
-      --accent:       #E8B274;
-      --accent-soft:  #2A2013;
-      --focus:        #E8B274;
-      --c-paper-2:    #050B14;
-      --c-paper-3:    #0D1725;
-      --shadow-xs: 0 1px 2px rgba(0, 0, 0, .4);
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, .35), 0 4px 12px -4px rgba(0, 0, 0, .5);
-      --shadow-md: 0 2px 4px rgba(0, 0, 0, .3), 0 12px 28px -10px rgba(0, 0, 0, .6);
-      --shadow-lg: 0 4px 8px rgba(0, 0, 0, .3), 0 28px 60px -20px rgba(0, 0, 0, .75);
-      color-scheme: dark;
-    }
-  }
+  /* Short screens give the header less height, so the hero keeps it. */
+  @media (max-height: 800px) { :root { --nav-h: 88px; } }
+  @media (max-width: 40rem) { :root { --topbar-h: 1.75rem; --nav-h: 60px; --header-h: 56px; } }
+  @media (max-height: 460px) { :root { --topbar-h: 0px; --nav-h: 54px; --header-h: 54px; } }
 }
 
 /* --------------------------------------------------------------------------
@@ -197,15 +179,10 @@
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
-    scroll-padding-top: calc(var(--header-h) + 1.5rem);
+    scroll-padding-top: 110px;
   }
 
-  body {
-    min-height: 100svh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
+  body { min-height: 100svh; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
   img, picture, svg, video, canvas { display: block; max-width: 100%; }
   img, video { height: auto; }
@@ -219,6 +196,7 @@
   :target { scroll-margin-top: calc(var(--header-h) + 2rem); }
   summary { cursor: pointer; list-style: none; }
   summary::-webkit-details-marker { display: none; }
+  a, button, summary { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
   /* `hidden` must win over component display rules (.btn, .card, …). */
   [hidden] { display: none !important; }
@@ -244,46 +222,86 @@
     line-height: var(--lh-relaxed);
     color: var(--text);
     background-color: var(--bg);
-    font-feature-settings: "calt" 1, "ss01" 1;
+    /* Symbols stay plain text. A phone must never swap one for a colour emoji. */
+    font-variant-emoji: text;
     transition: background-color var(--dur-3) var(--ease-out), color var(--dur-3) var(--ease-out);
   }
 
-  /* Grain overlay: barely perceptible, but it is what kills the flat-template feel. */
-  body::after {
+  /* The ornament behind the page. Fixed, so it stays one viewport-sized layer
+     however long the document gets. Purely decorative and out of the a11y tree. */
+  body::before,
+  .section--sunken::before,
+  .section--inverse::before,
+  .cta-band::before,
+  .community__copy::before,
+  .community__visual::before,
+  .site-footer::before {
     content: "";
-    position: fixed;
-    inset: 0;
-    background-image: var(--grain);
-    opacity: .45;
-    mix-blend-mode: multiply;
     pointer-events: none;
-    z-index: 1;
+    background-color: var(--pat-color);
+    opacity: var(--pat-opacity);
+    -webkit-mask-image: var(--pat-tile), var(--pat-fade);
+    mask-image: var(--pat-tile), var(--pat-fade);
+    -webkit-mask-size: var(--pat-size) var(--pat-size), 100% 100%;
+    mask-size: var(--pat-size) var(--pat-size), 100% 100%;
+    -webkit-mask-position: center top, 0 0;
+    mask-position: center top, 0 0;
+    -webkit-mask-repeat: repeat, no-repeat;
+    mask-repeat: repeat, no-repeat;
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
   }
-  :root[data-theme="dark"] body::after { mix-blend-mode: overlay; opacity: .22; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) body::after { mix-blend-mode: overlay; opacity: .22; }
+  body::before { position: fixed; inset: 0; z-index: 0; }
+
+  /* Surfaces with their own paint carry their own copy of the ornament. */
+  .section--sunken,
+  .section--inverse,
+  .cta-band,
+  .community__copy,
+  .community__visual,
+  .site-footer { position: relative; isolation: isolate; }
+  .section--sunken::before,
+  .section--inverse::before,
+  .cta-band::before,
+  .community__copy::before,
+  .community__visual::before,
+  .site-footer::before { position: absolute; inset: 0; z-index: -1; }
+
+  /* A half-width panel gets the fade centred on itself, which would hide the
+     figure exactly where it should meet the neighbouring panel. Flat instead. */
+  .community__copy::before,
+  .community__visual::before { --pat-fade: linear-gradient(#000, #000); opacity: calc(var(--pat-opacity) * .55); }
+
+  @media (max-width: 40rem) {
+    :root {
+      --pat-size: 168px;
+      --pat-opacity: .19;
+      --fs-4xl: clamp(2.4375rem, 10.7vw, 4.1875rem);
+      --fs-3xl: clamp(2.25rem, 9.6vw, 3.25rem);
+      --fs-2xl: clamp(2rem, 9vw, 2.3125rem);
+    }
+    :root[data-theme="dark"] { --pat-opacity: .09; }
   }
 
   h1, h2, h3 {
     font-family: var(--font-display);
-    font-weight: 500;
+    font-weight: 600;
     line-height: var(--lh-snug);
     letter-spacing: var(--tracking-tight);
-    font-variation-settings: "opsz" 48, "wdth" 92;
     text-wrap: balance;
   }
   h1 {
-    font-size: var(--fs-3xl);
+    font-size: var(--fs-4xl);
     line-height: var(--lh-tight);
-    font-variation-settings: "opsz" 96, "wdth" 87;
+    letter-spacing: -.048em;
   }
   h2 { font-size: var(--fs-2xl); }
-  h3 { font-size: var(--fs-xl); }
+  h3 { font-size: var(--fs-xl); letter-spacing: -.03em; }
   h4, h5, h6 {
-    font-family: var(--font-body);
+    font-family: var(--font-display);
     font-weight: 600;
     line-height: var(--lh-snug);
-    letter-spacing: -.01em;
+    letter-spacing: -.02em;
     text-wrap: balance;
   }
   h4 { font-size: var(--fs-lg); }
@@ -291,33 +309,70 @@
   h6 { font-size: var(--fs-base); }
   p { text-wrap: pretty; }
 
-  strong, b { font-weight: 600; color: var(--text); }
-  em { font-style: italic; }
+  strong, b { font-weight: 600; color: inherit; }
   small { font-size: var(--fs-sm); }
+
+  /* Emphasis in headings: a colour on h2, a hand-drawn orange rule on h1. */
+  em { font-style: normal; }
+  h2 em { color: var(--accent); }
+  h1 em { position: relative; display: inline-block; max-width: 100%; }
+  h1 em::after {
+    content: "";
+    position: absolute;
+    inset-block-end: -.11em;
+    inset-inline-start: 0;
+    inline-size: 99%;
+    block-size: 6px;
+    border-block-start: 3px solid var(--c-orange);
+    border-radius: 50%;
+    transform: rotate(-1.2deg);
+  }
 
   a { text-decoration-thickness: 1px; text-underline-offset: .22em; }
   a:not([class]) {
     color: var(--brand-text);
-    text-decoration-color: color-mix(in oklab, var(--brand) 40%, transparent);
+    text-decoration-color: color-mix(in oklab, currentColor 45%, transparent);
     transition: text-decoration-color var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out);
   }
   a:not([class]):hover { text-decoration-color: currentColor; }
 
-  ::selection { background: var(--c-amber-200); color: var(--c-brand-900); }
-  :root[data-theme="dark"] ::selection { background: var(--c-brand-600); color: #fff; }
-
-  :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: var(--r-xs); }
-  :focus:not(:focus-visible) { outline: none; }
-
-  ::-webkit-scrollbar { width: 11px; height: 11px; }
-  ::-webkit-scrollbar-track { background: var(--bg-sunken); }
-  ::-webkit-scrollbar-thumb {
-    background: var(--line-strong);
-    border-radius: 99px;
-    border: 3px solid var(--bg-sunken);
+  /* Text roles live here, below the component layer, so a component can still
+     set their width or colour for its own context. */
+  .eyebrow {
+    font-size: var(--fs-2xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--text);
+    display: inline-flex;
+    align-items: center;
+    gap: .85em;
+    line-height: 1.4;
   }
-  ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
-  * { scrollbar-color: var(--line-strong) var(--bg-sunken); scrollbar-width: thin; }
+  /* The orange mark opens the top of a page, the way it opens the hero. */
+  .hero-copy .eyebrow::before,
+  .page-head .eyebrow::before {
+    content: "";
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    flex: none;
+    background-color: var(--c-orange);
+    -webkit-mask: var(--asterisk) center / contain no-repeat;
+    mask: var(--asterisk) center / contain no-repeat;
+  }
+  .eyebrow--accent { color: var(--accent); }
+
+  .lede {
+    font-size: var(--fs-md);
+    line-height: 1.6;
+    color: var(--text-soft);
+    max-inline-size: var(--measure-narrow);
+  }
+
+  ::selection { background: var(--c-orange); color: var(--c-ink); }
+
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: var(--r-xs); }
+  :focus:not(:focus-visible) { outline: none; }
 
   /* Cross-document view transitions where supported. */
   @view-transition { navigation: auto; }
@@ -341,8 +396,7 @@
     margin-inline: auto;
     padding-inline: var(--gutter);
   }
-  .container--wide { max-width: var(--container-wide); }
-  .container--text { max-width: var(--container-text); }
+  .container--text { max-width: calc(var(--container-text) + 2 * var(--gutter)); }
   .container--flush { padding-inline: 0; }
 
   .section { padding-block: var(--section-y); position: relative; }
@@ -350,30 +404,31 @@
   .section--flush-top { padding-block-start: 0; }
   .section--flush-bottom { padding-block-end: 0; }
   .section--sunken { background: var(--bg-sunken); }
+
   /* Any surface painted with --bg-inverse has to remap the text tokens too,
-     otherwise descendants keep the page-level colours and vanish into it.
-     The .cta-band shares this: it is the same inverted surface. */
+     otherwise descendants keep the page-level colours and vanish into it. */
   .section--inverse,
-  .cta-band {
+  .cta-band,
+  .community__visual,
+  .site-footer {
     background: var(--bg-inverse);
     color: var(--text-inverse);
     --text: var(--text-inverse);
-    --text-soft: color-mix(in oklab, var(--text-inverse) 74%, transparent);
-    --text-muted: color-mix(in oklab, var(--text-inverse) 54%, transparent);
-    --line: color-mix(in oklab, var(--text-inverse) 16%, transparent);
-    --line-strong: color-mix(in oklab, var(--text-inverse) 32%, transparent);
-    --surface: color-mix(in oklab, var(--text-inverse) 6%, transparent);
-    --surface-soft: color-mix(in oklab, var(--text-inverse) 10%, transparent);
-    --brand-text: var(--c-brand-300);
-    /* Mixing toward the band's own text colour keeps the accent readable
-       whichever way the surface is flipped. */
-    --accent: color-mix(in oklab, var(--c-amber-400) 62%, var(--text-inverse));
-  }
-  :root[data-theme="dark"] .section--inverse,
-  :root[data-theme="dark"] .cta-band { --brand-text: var(--c-brand-700); }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .section--inverse,
-    :root:not([data-theme="light"]) .cta-band { --brand-text: var(--c-brand-700); }
+    --text-soft: #B8CAC4;
+    --text-muted: #A3BAB1;
+    --line: #426362;
+    --line-strong: #5F807C;
+    --surface: rgba(255, 255, 255, .035);
+    --surface-soft: rgba(255, 255, 255, .06);
+    --bg-raised: rgba(255, 255, 255, .05);
+    --brand: var(--c-orange);
+    --brand-hover: var(--c-orange-2);
+    --brand-text: var(--c-orange);
+    --on-brand: var(--c-ink);
+    --accent: var(--c-orange);
+    --accent-soft: rgba(255, 121, 83, .12);
+    --pat-color: #F6F6F0;
+    --pat-opacity: .13;
   }
 
   .stack > * + * { margin-block-start: var(--flow, 1.25rem); }
@@ -381,7 +436,7 @@
   .stack--loose { --flow: 2rem; }
   .stack--xloose { --flow: 3rem; }
 
-  .grid { display: grid; gap: var(--gap, var(--sp-6)); }
+  .grid { display: grid; gap: var(--gap, 1.6875rem); }
   .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -390,17 +445,18 @@
   /* Editorial split: label rail on the left, content on the right. */
   .rail {
     display: grid;
-    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
-    gap: clamp(2rem, 1rem + 4vw, 6rem);
+    grid-template-columns: minmax(0, 17rem) minmax(0, 1fr);
+    gap: clamp(2rem, 1rem + 5vw, 7rem);
     align-items: start;
   }
+  .rail--wide { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 8%; }
   .rail__aside { position: sticky; top: calc(var(--header-h) + 2.5rem); }
 
   .cluster {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: var(--gap, var(--sp-4));
+    gap: var(--gap, 1.6875rem);
   }
   .cluster--between { justify-content: space-between; }
   .cluster--center { justify-content: center; }
@@ -408,24 +464,33 @@
   .split {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(2rem, 1rem + 5vw, 6rem);
+    gap: clamp(2rem, 1rem + 5vw, 7rem);
     align-items: center;
   }
   .split--lean { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
   .split--lean-r { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); }
   .split--top { align-items: start; }
 
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10%;
+    align-items: start;
+  }
+
   .prose { max-width: var(--measure); }
   .prose--narrow { max-width: var(--measure-narrow); }
 
   @media (max-width: 62rem) {
     .grid--3, .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .rail { grid-template-columns: 1fr; gap: var(--sp-6); }
+    .rail, .rail--wide { grid-template-columns: 1fr; gap: var(--sp-6); }
     .rail__aside { position: static; }
     .split, .split--lean, .split--lean-r { grid-template-columns: 1fr; gap: var(--sp-7); }
+    .intro-grid { gap: 6%; }
   }
   @media (max-width: 40rem) {
     .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
+    .intro-grid { grid-template-columns: 1fr; gap: 1.5625rem; }
   }
 }
 
@@ -443,35 +508,6 @@
     border: 0;
   }
 
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--fs-2xs);
-    font-weight: 500;
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--text-muted);
-    display: inline-flex;
-    align-items: center;
-    gap: .6em;
-    line-height: 1;
-  }
-  .eyebrow::before {
-    content: "";
-    inline-size: 1.75rem;
-    block-size: 1px;
-    background: currentColor;
-    opacity: .5;
-    flex: none;
-  }
-  .eyebrow--bare::before { display: none; }
-  .eyebrow--accent { color: var(--accent); }
-
-  .lede {
-    font-size: var(--fs-md);
-    line-height: 1.62;
-    color: var(--text-soft);
-    max-width: var(--measure-narrow);
-  }
   .muted { color: var(--text-muted); }
   .soft { color: var(--text-soft); }
   .accent-text { color: var(--accent); }
@@ -480,12 +516,9 @@
   .display {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: var(--tracking-tight);
-    line-height: var(--lh-tight);
-    font-variation-settings: "opsz" 72, "wdth" 92;
+    letter-spacing: -.03em;
+    line-height: 1.3;
   }
-  /* The display face has no italic; the emphasis comes from width instead. */
-  .display--quiet { font-weight: 400; font-variation-settings: "opsz" 96, "wdth" 80; }
   .fs-4xl { font-size: var(--fs-4xl); }
   .fs-3xl { font-size: var(--fs-3xl); }
   .fs-2xl { font-size: var(--fs-2xl); }
@@ -494,7 +527,6 @@
   .fs-sm  { font-size: var(--fs-sm); }
   .fs-xs  { font-size: var(--fs-xs); }
   .mono {
-    font-family: var(--font-mono);
     font-size: var(--fs-xs);
     letter-spacing: var(--tracking-wide);
     font-variant-numeric: tabular-nums;
@@ -504,6 +536,8 @@
   .text-center .lede, .text-center .prose { margin-inline: auto; }
   .mx-auto { margin-inline: auto; }
   .mt-0 { margin-block-start: 0; }
+  .mt-2 { margin-block-start: var(--sp-2); }
+  .mt-3 { margin-block-start: var(--sp-3); }
   .mt-4 { margin-block-start: var(--sp-4); }
   .mt-5 { margin-block-start: var(--sp-5); }
   .mt-6 { margin-block-start: var(--sp-6); }
@@ -514,9 +548,6 @@
   .no-print { }
 
   .hairline { block-size: 1px; background: var(--line); border: 0; }
-  .hairline--fade {
-    background: linear-gradient(90deg, transparent, var(--line) 12%, var(--line) 88%, transparent);
-  }
 
   .sr-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 
@@ -526,7 +557,12 @@
 
   @media print {
     .no-print, .site-header, .site-footer, .mobile-bar, .cookie, .fab { display: none !important; }
-    body::after { display: none; }
+    body::before,
+    .section--sunken::before,
+    .section--inverse::before,
+    .cta-band::before,
+    .community__copy::before,
+    .community__visual::before { display: none; }
     body { background: #fff; color: #000; }
   }
 }

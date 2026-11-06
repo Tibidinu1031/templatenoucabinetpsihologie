@@ -7,7 +7,7 @@
         <a href="index.html">Acasă</a>{{icon:chevronR}}<span aria-current="page">Contact</span>
       </nav>
       <p class="eyebrow mt-5">Contact</p>
-      <h1>Hai să vorbim</h1>
+      <h1>Hai să <em>vorbim</em></h1>
       <p class="lede">Solicitările sunt preluate în cel mai scurt timp. Dacă preferi, poți suna direct.</p>
     </div>
   </section>
@@ -19,42 +19,44 @@
         <aside class="stack stack--loose">
           <div>
             <p class="eyebrow eyebrow--bare">Telefon</p>
-            <p class="fs-lg display mt-3"><a href="tel:{{phoneRaw}}" style="text-decoration:none">{{phone}}</a></p>
+            <a class="contact-phone mt-3" href="tel:{{phoneRaw}}">{{phone}} {{icon:arrow}}</a>
             <div class="cluster mt-2" style="--gap:.4rem">
               <button class="btn btn--quiet btn--sm" type="button" data-copy="{{phone}}">Copiază numărul</button>
               <a class="btn btn--quiet btn--sm" href="{{wa}}" target="_blank" rel="noopener">Scrie pe WhatsApp</a>
             </div>
           </div>
 
-          <div style="border-top:1px solid var(--line);padding-top:1.5rem">
-            <p class="eyebrow eyebrow--bare">Adresă</p>
-            <h2 class="mt-3" style="font-size:var(--fs-lg)">Punct de lucru</h2>
-            <p class="fs-sm soft mt-3">
-              Adresa cabinetului se anunță în curând. Până atunci, ședințele online sunt
-              disponibile pentru toate serviciile.
-            </p>
-          </div>
+          <div class="visit-card">
+            <div>
+              <p class="eyebrow eyebrow--bare">Adresă</p>
+              <h2 class="mt-3">Punct de lucru</h2>
+              <p class="fs-sm soft mt-3">
+                Adresa cabinetului se anunță în curând. Până atunci, ședințele online sunt
+                disponibile pentru toate serviciile.
+              </p>
+            </div>
 
-          <div style="border-top:1px solid var(--line);padding-top:1.5rem">
-            <p class="eyebrow eyebrow--bare">Email</p>
-            <p class="fs-sm soft mt-3">
-              Adresa de email se adaugă în curând. Cel mai rapid mă găsești pe
-              <a href="{{wa}}" target="_blank" rel="noopener">WhatsApp</a> sau la telefon.
-            </p>
-          </div>
+            <div>
+              <p class="eyebrow eyebrow--bare">Email</p>
+              <p class="fs-sm soft mt-3">
+                Adresa de email se adaugă în curând. Cel mai rapid mă găsești pe
+                <a href="{{wa}}" target="_blank" rel="noopener">WhatsApp</a> sau la telefon.
+              </p>
+            </div>
 
-          <div style="border-top:1px solid var(--line);padding-top:1.5rem">
-            <p class="eyebrow eyebrow--bare">Program</p>
-            <dl class="spec mt-3" style="border-top:0">
-              <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Luni – Vineri</dt><dd>09:00 – 21:00</dd></div>
-              <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Sâmbătă</dt><dd>10:00 – 16:00</dd></div>
-              <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Duminică</dt><dd class="muted">Închis</dd></div>
-            </dl>
+            <div>
+              <p class="eyebrow eyebrow--bare">Program</p>
+              <dl class="spec mt-3" style="border-top:0">
+                <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Luni – Vineri</dt><dd>09:00 – 21:00</dd></div>
+                <div class="spec__row" style="grid-template-columns:1fr auto"><dt>Sâmbătă</dt><dd>10:00 – 16:00</dd></div>
+                <div class="spec__row" style="grid-template-columns:1fr auto;border-bottom:0"><dt>Duminică</dt><dd class="muted">Închis</dd></div>
+              </dl>
+            </div>
           </div>
 
           <div class="cluster">
             <a class="btn btn--primary" href="programare.html">Programare {{icon:arrow:btn__icon btn__icon--arrow}}</a>
-            <a class="btn btn--ghost" href="{{wa}}" target="_blank" rel="noopener">{{icon:whatsapp:btn__icon}} WhatsApp</a>
+            <a class="text-link" href="{{wa}}" target="_blank" rel="noopener">WhatsApp {{icon:whatsapp}}</a>
           </div>
         </aside>
 
